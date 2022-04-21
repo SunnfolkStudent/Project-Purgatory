@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Input _Input;
+    private Input _Input;
     public Rigidbody2D _Rigidbody2D;
 
     [SerializeField] private float moveSpeed = 10f;
@@ -35,9 +35,9 @@ public class PlayerMovement : MonoBehaviour
             print("Used magic");
         }
 
-        if (_Input.Switch)
+        if (_Input.Light)
         {
-            print("You switched magic");
+            print("You switched light");
         }
     }
     

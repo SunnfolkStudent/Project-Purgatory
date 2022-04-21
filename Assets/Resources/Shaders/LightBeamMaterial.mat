@@ -34,8 +34,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _LightEdgeSmoothness: 10
-    - _LightThickness: 2
+    - _LightEdgeSmoothness: 3
+    - _LightScale: 0.1
+    - _LightThickness: 1
     m_Colors:
-    - _Color: {r: 1, g: 0.9372549, b: 0, a: 0}
+    - _Color: {r: 25655.426, g: 24312.21, b: 0, a: 0}
+    - _LightSpeed: {r: -1.5, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
