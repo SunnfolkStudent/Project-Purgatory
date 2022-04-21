@@ -23,13 +23,13 @@ public class Input : MonoBehaviour
     [HideInInspector] public Vector2 MoveVector;
     [HideInInspector] public bool Jump;
     [HideInInspector] public bool Magic;
-    [HideInInspector] public bool Switch;
+    [HideInInspector] public bool Light;
 
     void Update()
     {
         MoveVector = _Input.Player.Move.ReadValue<Vector2>();
         Jump = _Input.Player.Jump.triggered;
         Magic = _Input.Player.Magic.triggered;
-        Switch = _Input.Player.Switch.triggered;
+        Light = _Input.Player.Light.triggered;
     }
 }

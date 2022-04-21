@@ -55,7 +55,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Switch"",
+                    ""name"": ""Light"",
                     ""type"": ""Button"",
                     ""id"": ""64aadca4-17d7-4dca-a30f-c285adf12955"",
                     ""expectedControlType"": ""Button"",
@@ -182,7 +182,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Switch"",
+                    ""action"": ""Light"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -193,7 +193,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Switch"",
+                    ""action"": ""Light"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -207,7 +207,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Magic = m_Player.FindAction("Magic", throwIfNotFound: true);
-        m_Player_Switch = m_Player.FindAction("Switch", throwIfNotFound: true);
+        m_Player_Light = m_Player.FindAction("Light", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -270,7 +270,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Magic;
-    private readonly InputAction m_Player_Switch;
+    private readonly InputAction m_Player_Light;
     public struct PlayerActions
     {
         private @PlayerInputs m_Wrapper;
@@ -278,7 +278,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Magic => m_Wrapper.m_Player_Magic;
-        public InputAction @Switch => m_Wrapper.m_Player_Switch;
+        public InputAction @Light => m_Wrapper.m_Player_Light;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -297,9 +297,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Magic.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMagic;
                 @Magic.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMagic;
                 @Magic.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMagic;
-                @Switch.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitch;
-                @Switch.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitch;
-                @Switch.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitch;
+                @Light.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLight;
+                @Light.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLight;
+                @Light.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLight;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -313,9 +313,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Magic.started += instance.OnMagic;
                 @Magic.performed += instance.OnMagic;
                 @Magic.canceled += instance.OnMagic;
-                @Switch.started += instance.OnSwitch;
-                @Switch.performed += instance.OnSwitch;
-                @Switch.canceled += instance.OnSwitch;
+                @Light.started += instance.OnLight;
+                @Light.performed += instance.OnLight;
+                @Light.canceled += instance.OnLight;
             }
         }
     }
@@ -325,6 +325,6 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnMagic(InputAction.CallbackContext context);
-        void OnSwitch(InputAction.CallbackContext context);
+        void OnLight(InputAction.CallbackContext context);
     }
 }
