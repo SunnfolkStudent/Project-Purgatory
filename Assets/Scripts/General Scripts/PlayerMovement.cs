@@ -26,18 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (_Input.Jump && grounded)
         {
-            print("jumped");
             _Rigidbody2D.velocity += new Vector2(0f, jumpSpeed);
-        }
-
-        if (_Input.Magic)
-        {
-            print("Used magic");
-        }
-
-        if (_Input.Switch)
-        {
-            print("You switched magic");
         }
     }
     
@@ -49,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (hit.collider != null)
         {
-            print("isGround");
             grounded = true;
         }
     }
