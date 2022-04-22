@@ -4,9 +4,9 @@ using UnityEngine;
 public class LightPowerSpot : MonoBehaviour
 {
     [SerializeField] private Input _input;
+    [SerializeField] private PlayerMovement Movement;
     public LineRenderer LineRenderer;
     public Transform lightPoint;
-    [HideInInspector] public Vector2 currentDirection;
     private bool isLightOn;
     public int LightRange;
     public LayerMask interactLayer;
@@ -16,7 +16,6 @@ public class LightPowerSpot : MonoBehaviour
     int currentReflections = 0;
     private List<Vector3> Points;
     const int Infinity = 999;
-
 
     private void Start()
     {
@@ -32,6 +31,7 @@ public class LightPowerSpot : MonoBehaviour
         if (isLightOn)
         {
             EnableLight();
+            Movement.canInput = false;
         }
 
         if (isLightOn)
@@ -42,9 +42,19 @@ public class LightPowerSpot : MonoBehaviour
         if (!isLightOn)
         {
             DisableLight();
+            Movement.canInput = true;
         }
 
-        RayCast();
+        if (_input.MoveVector.x != 0 || _input.MoveVector.y > 0) 
+        {
+            RayCast();
+        }
+        else if (_input.MoveVector == Vector2.zero)
+        {
+            print("hellu");
+            LineRenderer.positionCount = 2;
+        }
+        
     }
 
     private void EnableLight()
@@ -63,6 +73,7 @@ public class LightPowerSpot : MonoBehaviour
     private void DisableLight()
     {
         LineRenderer.enabled = false;
+        LineRenderer.positionCount = 2;
     }
 
     private void LightController()
@@ -75,7 +86,11 @@ public class LightPowerSpot : MonoBehaviour
 
     private void RayCast()
     {
-        var hitData = Physics2D.Raycast(lightPoint.position, (_input.MoveVector).normalized, LightRange, interactLayer);
+        print("horizontal: " + _input.MoveVector.x + " vertical: " + _input.MoveVector.y);
+        
+        var hitData = Physics2D.Raycast(lightPoint.position, _input.MoveVector, LightRange, interactLayer);
+        Debug.DrawRay(lightPoint.position, _input.MoveVector * LightRange, Color.red);
+        
         currentReflections = 0;
         Points.Clear();
         Points.Add(startPoint);

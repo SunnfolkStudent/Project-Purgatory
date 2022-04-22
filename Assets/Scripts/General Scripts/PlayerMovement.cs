@@ -7,21 +7,25 @@ public class PlayerMovement : MonoBehaviour
 {
     private Input _Input;
     public Rigidbody2D _Rigidbody2D;
-
+    
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float jumpSpeed = 10f;
 
     private bool grounded;
+    public bool canInput;
+
     [SerializeField] private LayerMask GroundLayer;
     [SerializeField] private float raycastRange;
     private void Start()
     {
         _Input = GetComponent<Input>();
         _Rigidbody2D = GetComponent<Rigidbody2D>();
+        canInput = true;
     }
 
     private void Update()
     {
+        if (!canInput) return;
         transform.position += new Vector3(_Input.MoveVector.x * moveSpeed, 0f, 0f) * Time.deltaTime;
 
         if (_Input.Jump && grounded)
