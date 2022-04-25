@@ -950,7 +950,6 @@ GameObject:
   - component: {fileID: 1484607572}
   - component: {fileID: 1484607571}
   - component: {fileID: 1484607570}
-  - component: {fileID: 1484607573}
   m_Layer: 7
   m_Name: Mirror (1)
   m_TagString: Mirror
@@ -1101,27 +1100,6 @@ Transform:
   m_Father: {fileID: 1830589732}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -270}
---- !u!114 &1484607573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484607569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2236e0b4dbaa82c478f4bd8a11d46b29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _input: {fileID: 0}
-  Movement: {fileID: 0}
-  LineRenderer: {fileID: 0}
-  lightPoint: {fileID: 0}
-  LightRange: 0
-  interactLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  atLightPoint: 0
 --- !u!1 &1541942625
 GameObject:
   m_ObjectHideFlags: 0

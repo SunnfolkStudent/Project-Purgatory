@@ -1,5 +1,8 @@
 using System.Collections.Generic;
+using Assets.Scripts.General_Scripts;
 using UnityEngine;
+using Input = Assets.Scripts.General_Scripts.Input;
+
 
 public class LightPowerSpot : MonoBehaviour
 {
@@ -27,10 +30,9 @@ public class LightPowerSpot : MonoBehaviour
 
     private void Update()
     {
-       // SetEdgeCollider(LineRenderer);
         LightController();
         if (!atLightPoint) return;
-        
+    
         if (isLightOn)
         {
             EnableLight();
@@ -56,7 +58,7 @@ public class LightPowerSpot : MonoBehaviour
         {
             LineRenderer.positionCount = 2;
         }
-    
+
     }
 
     private void EnableLight()
@@ -68,7 +70,7 @@ public class LightPowerSpot : MonoBehaviour
     private void UpdateLight()
     {
         LineRenderer.SetPosition(0, new Vector3(lightPoint.position.x, lightPoint.position.y, 0f));
-    
+
         LineRenderer.SetPosition(1, new Vector3(_input.MoveVector.x * LightRange, lightPoint.position.y, 0f));
     }
 
@@ -90,11 +92,11 @@ public class LightPowerSpot : MonoBehaviour
     {
         var hitData = Physics2D.Raycast(lightPoint.position, _input.MoveVector, LightRange, interactLayer);
         Debug.DrawRay(lightPoint.position, _input.MoveVector * LightRange, Color.red);
-    
+
         currentReflections = 0;
         Points.Clear();
         Points.Add(startPoint);
-    
+
         if (hitData.transform.CompareTag("Mirror") || hitData.transform.CompareTag("Ice"))
         {
             ReflectFurther(startPoint, hitData);
@@ -137,15 +139,17 @@ public class LightPowerSpot : MonoBehaviour
             Points.Add(hitData.point + newDirection * LightRange);
         }
     }
-
-    void OnTriggerStay2D(Collider2D other)
+    
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("LightPoint"))
+        if (other.gameObject.tag == "LightPoint")
         {
+            print("Can use light now");
             atLightPoint = true;
         }
         else
         {
+            print("car go broo");
             atLightPoint = false;
         }
     }
