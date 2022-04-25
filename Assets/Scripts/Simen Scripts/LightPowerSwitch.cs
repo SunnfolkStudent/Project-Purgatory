@@ -1,25 +1,25 @@
 using UnityEngine;
 
-namespace Assets.Scripts.Simen_Scripts.Abilities
+public class LightPowerSwitch : MonoBehaviour
 {
-    public class LightPowerSwitch : MonoBehaviour
+    [SerializeField] private Animator _animator;
+    private bool canAnimate = true;
+
+    private void Start()
     {
-        [SerializeField] private Animator _animator;
-        private bool canAnimate = true;
+        canAnimate = true;
+        print(canAnimate);
 
-        private void Start()
-        {
-            canAnimate = true;
-        }
+    }
 
-        private void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("LightBeam") && canAnimate)
         {
-            if (other.gameObject.CompareTag("LightBeam") && canAnimate)
-            {
-                print("I should play animation");
-                _animator.Play("OpenDoor");
-                canAnimate = false;
-            }
+            print("I should play animation");
+            _animator.Play("OpenDoor");
+            canAnimate = false;
         }
     }
 }
+

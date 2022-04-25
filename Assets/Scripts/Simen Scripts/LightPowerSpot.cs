@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Assets.Scripts.General_Scripts;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 using Input = Assets.Scripts.General_Scripts.Input;
 
@@ -9,6 +10,7 @@ public class LightPowerSpot : MonoBehaviour
     [SerializeField] private Input _input;
     [SerializeField] private PlayerMovement Movement;
     public LineRenderer LineRenderer;
+    private Ray2D ray;
     public Transform lightPoint;
     private bool isLightOn;
     public int LightRange;
@@ -60,39 +62,40 @@ public class LightPowerSpot : MonoBehaviour
         }
 
     }
-
-    private void EnableLight()
-    {
-        LineRenderer.enabled = true;
-        LineRenderer.SetPosition(0, new Vector3(lightPoint.position.x, lightPoint.position.y, 0f));
-    }
-
-    private void UpdateLight()
-    {
-        LineRenderer.SetPosition(0, new Vector3(lightPoint.position.x, lightPoint.position.y, 0f));
-
-        LineRenderer.SetPosition(1, new Vector3(_input.MoveVector.x * LightRange, lightPoint.position.y, 0f));
-    }
-
-    private void DisableLight()
-    {
-        LineRenderer.enabled = false;
-        LineRenderer.positionCount = 2;
-    }
-
-    private void LightController()
-    {
-        if (_input.Light)
+    
+    #region LightStuff
+     private void EnableLight()
         {
-            isLightOn = !isLightOn;
+            LineRenderer.enabled = true;
+            LineRenderer.SetPosition(0, new Vector3(lightPoint.position.x, lightPoint.position.y, 0f));
         }
-    }
+    
+        private void UpdateLight()
+        {
+            LineRenderer.SetPosition(0, new Vector3(lightPoint.position.x, lightPoint.position.y, 0f));
+    
+            LineRenderer.SetPosition(1, new Vector3(_input.MoveVector.x * LightRange, lightPoint.position.y, 0f));
+        }
+    
+        private void DisableLight()
+        {
+            LineRenderer.enabled = false;
+            LineRenderer.positionCount = 2;
+        }
+    
+        private void LightController()
+        {
+            if (_input.Light)
+            {
+                isLightOn = !isLightOn;
+            }
+        }
+  #endregion
 
     private void RayCast()
     {
         var hitData = Physics2D.Raycast(lightPoint.position, _input.MoveVector, LightRange, interactLayer);
-        Debug.DrawRay(lightPoint.position, _input.MoveVector * LightRange, Color.red);
-
+        Debug.DrawRay(ray.direction, _input.MoveVector * LightRange, Color.magenta);
         currentReflections = 0;
         Points.Clear();
         Points.Add(startPoint);
@@ -109,20 +112,22 @@ public class LightPowerSpot : MonoBehaviour
         LineRenderer.positionCount = Points.Count;
         LineRenderer.SetPositions(Points.ToArray());
 
+        /*
         Mesh mesh = new Mesh();
         mesh.name = gameObject.name + " mesh";
         LineRenderer.BakeMesh(mesh);
         mesh.Optimize();
         mesh.RecalculateNormals();
         mesh.RecalculateBounds();
-        mesh.RecalculateTangents();
+        mesh.RecalculateTangents(); 
 
-        gameObject.GetComponentInChildren<MeshCollider>().sharedMesh = mesh;
+        gameObject.GetComponentInChildren<MeshCollider>().sharedMesh = mesh; 
+        */
     }
     private void ReflectFurther(Vector2 origin, RaycastHit2D hitData)
     {
         if (currentReflections > maxReflections) return;
-
+        ray = new Ray2D(lightPoint.position, _input.MoveVector);
         Points.Add(hitData.point);
         currentReflections++;
 
@@ -133,6 +138,7 @@ public class LightPowerSpot : MonoBehaviour
         if (newHitData)
         {
             ReflectFurther(hitData.point, newHitData);
+            ray = new Ray2D(newHitData.point, Vector2.Reflect(ray.direction, newHitData.normal));
         }
         else
         {
@@ -140,9 +146,10 @@ public class LightPowerSpot : MonoBehaviour
         }
     }
     
-    private void OnTriggerEnter2D(Collider2D other)
+    
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "LightPoint")
+        if (other.gameObject.tag == "Player")
         {
             print("Can use light now");
             atLightPoint = true;
