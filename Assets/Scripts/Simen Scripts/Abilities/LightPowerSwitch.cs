@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LightPowerSwitch : MonoBehaviour
@@ -10,7 +11,6 @@ public class LightPowerSwitch : MonoBehaviour
     private void Start()
     {
         canAnimate = true;
-        print("I did happen, lightgoalspot is on");
     }
 
     private void OnCollisionEnter2D(Collision2D other)

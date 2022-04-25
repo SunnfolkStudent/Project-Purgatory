@@ -1,7 +1,8 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightPowerSpot : MonoBehaviour
+public class test : MonoBehaviour
 {
     [SerializeField] private Input _input;
     [SerializeField] private PlayerMovement Movement;
@@ -18,7 +19,7 @@ public class LightPowerSpot : MonoBehaviour
     const int Infinity = 999;
     public bool atLightPoint;
 
-    private void Start()
+    private void start()
     {
         DisableLight();
         startPoint = lightPoint.transform.position;

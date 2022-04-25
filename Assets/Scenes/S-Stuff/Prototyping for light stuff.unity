@@ -598,9 +598,8 @@ GameObject:
   - component: {fileID: 1109445909}
   - component: {fileID: 1109445912}
   - component: {fileID: 1109445911}
-  - component: {fileID: 1109445913}
   m_Layer: 6
-  m_Name: Line
+  m_Name: LightBeam
   m_TagString: LightBeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -613,13 +612,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1109445908}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.02, y: 0, z: 0.10094644}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1300596291}
-  m_RootOrder: 0
+  m_Children:
+  - {fileID: 2118410518}
+  m_Father: {fileID: 1541942627}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1109445911
 MonoBehaviour:
@@ -737,28 +737,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!68 &1109445913
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1109445908}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -0.9461622, y: 0.44140363}
-  - {x: 0.022489786, y: 0.4454124}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
 --- !u!1 &1138104079
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,38 +821,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1300596290
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1300596291}
-  m_Layer: 0
-  m_Name: LightBeam
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1300596291
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1300596290}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.02, y: 0, z: 0.10094644}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1109445909}
-  m_Father: {fileID: 1541942627}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1399405115
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,6 +950,7 @@ GameObject:
   - component: {fileID: 1484607572}
   - component: {fileID: 1484607571}
   - component: {fileID: 1484607570}
+  - component: {fileID: 1484607573}
   m_Layer: 7
   m_Name: Mirror (1)
   m_TagString: Mirror
@@ -1154,6 +1101,27 @@ Transform:
   m_Father: {fileID: 1830589732}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -270}
+--- !u!114 &1484607573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484607569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2236e0b4dbaa82c478f4bd8a11d46b29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _input: {fileID: 0}
+  Movement: {fileID: 0}
+  LineRenderer: {fileID: 0}
+  lightPoint: {fileID: 0}
+  LightRange: 0
+  interactLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  atLightPoint: 0
 --- !u!1 &1541942625
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,7 +1206,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1968000377}
-  - {fileID: 1300596291}
+  - {fileID: 1109445909}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1256,12 +1224,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _input: {fileID: 1712495406}
   Movement: {fileID: 1712495407}
-  LineRenderer: {fileID: 0}
+  LineRenderer: {fileID: 1109445912}
   lightPoint: {fileID: 822809916}
   LightRange: 100
   interactLayer:
     serializedVersion: 2
     m_Bits: 128
+  atLightPoint: 0
 --- !u!61 &1541942629
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1617,7 +1586,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1896940203}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4655bdd39a450a49baa6cbb929931fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 5156032b948d00d4a9b07baf4ed36454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 2031220860}
@@ -1895,3 +1864,49 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2118410517
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2118410518}
+  - component: {fileID: 2118410519}
+  m_Layer: 6
+  m_Name: Collider
+  m_TagString: LightBeam
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2118410518
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118410517}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1109445909}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &2118410519
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118410517}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
