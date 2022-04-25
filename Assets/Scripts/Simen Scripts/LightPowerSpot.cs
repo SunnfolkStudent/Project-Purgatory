@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Assets.Scripts.General_Scripts;
-using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 using Input = Assets.Scripts.General_Scripts.Input;
 
@@ -22,6 +21,8 @@ public class LightPowerSpot : MonoBehaviour
     private List<Vector3> Points;
     const int Infinity = 999;
     public bool atLightPoint;
+
+    public readonly Vector2[] lightDirection = {Vector2.zero, Vector2.left, Vector2.up, Vector2.right};
 
     private void Start()
     {
