@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class LightPowerSpot : MonoBehaviour
 {
     [SerializeField] private Input _input;
     [SerializeField] private PlayerMovement Movement;
+    private EdgeCollider2D collider;
     public LineRenderer LineRenderer;
     public Transform lightPoint;
     private bool isLightOn;
@@ -22,12 +24,14 @@ public class LightPowerSpot : MonoBehaviour
         DisableLight();
         startPoint = lightPoint.transform.position;
         Points = new List<Vector3>();
+        collider = GetComponentInChildren<EdgeCollider2D>();
     }
 
     private void Update()
     {
+       // SetEdgeCollider(LineRenderer);
         LightController();
-        
+    
         if (isLightOn)
         {
             EnableLight();
@@ -51,10 +55,9 @@ public class LightPowerSpot : MonoBehaviour
         }
         else if (_input.MoveVector == Vector2.zero)
         {
-            print("hellu");
             LineRenderer.positionCount = 2;
         }
-        
+    
     }
 
     private void EnableLight()
@@ -66,7 +69,7 @@ public class LightPowerSpot : MonoBehaviour
     private void UpdateLight()
     {
         LineRenderer.SetPosition(0, new Vector3(lightPoint.position.x, lightPoint.position.y, 0f));
-        
+    
         LineRenderer.SetPosition(1, new Vector3(_input.MoveVector.x * LightRange, lightPoint.position.y, 0f));
     }
 
@@ -86,15 +89,13 @@ public class LightPowerSpot : MonoBehaviour
 
     private void RayCast()
     {
-        print("horizontal: " + _input.MoveVector.x + " vertical: " + _input.MoveVector.y);
-        
         var hitData = Physics2D.Raycast(lightPoint.position, _input.MoveVector, LightRange, interactLayer);
         Debug.DrawRay(lightPoint.position, _input.MoveVector * LightRange, Color.red);
-        
+    
         currentReflections = 0;
         Points.Clear();
         Points.Add(startPoint);
-        
+    
         if (hitData.transform.CompareTag("Mirror"))
         {
             ReflectFurther(startPoint, hitData);
@@ -126,5 +127,18 @@ public class LightPowerSpot : MonoBehaviour
         {
             Points.Add(hitData.point + newDirection * LightRange);
         }
+    }
+
+    private void SetEdgeCollider(LineRenderer lineRenderer)
+    {
+        List<Vector2> edges = new List<Vector2>();
+
+        for (int point = 0; point<lineRenderer.positionCount; point++)
+        {
+            Vector3 lineRendererPoint = lineRenderer.GetPosition(point);
+            edges.Add(new Vector2(lineRendererPoint.x, lineRendererPoint.y));
+        }
+
+        collider.SetPoints(edges);
     }
 }
