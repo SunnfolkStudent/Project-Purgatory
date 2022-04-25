@@ -2,46 +2,67 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class ChangeStateScript : MonoBehaviour
 {
 
     public FreezePower _FreezePower;
+    public Tilemap _WaterIceTimap;
 
-    public SpriteRenderer _SpriteRenderer;
+    [HideInInspector] private bool isIce;
+    [HideInInspector] private bool isWater;
+
+    public GameObject IceVisualTile;
     
+    private void Start()
+    {
+        isIce = false;
+        isWater = false;
+    }
+
     void Update()
     {
-        UpdateState();
+        StateStatus();
     }
 
 
     public void ChangeState()
     {
-        print("changing state");
+        print("frrrrreeeeezzzeee");
         
-        if (gameObject.tag == "Water")
+        if (isWater)
         {
             gameObject.tag = "Ice";
         }
-        else if (gameObject.tag == "Ice")
+        else if (isIce)
         {
             gameObject.tag = "Water";
         }
     }
     
-    private void UpdateState()
+    private void StateStatus()
     {
         if (gameObject.tag == "Water")
         {
-            _SpriteRenderer.color = Color.blue;
+            isWater = true;
+            isIce = false;
+            int waterLayer = LayerMask.NameToLayer("Water");
+            gameObject.layer = waterLayer;
+            gameObject.GetComponent<CompositeCollider2D>().isTrigger = true;
+            IceVisualTile.SetActive(false);
+            print("water");
         }
 
         if (gameObject.tag == "Ice")
         {
-            _SpriteRenderer.color = Color.cyan;
+            isIce = true;
+            isWater = false;
+            int iceLayer = LayerMask.NameToLayer("Ice");
+            gameObject.layer = iceLayer;
+            gameObject.GetComponent<CompositeCollider2D>().isTrigger = false;
+            IceVisualTile.SetActive(true);
+            print("ice");
         }
-
-
     }
 }

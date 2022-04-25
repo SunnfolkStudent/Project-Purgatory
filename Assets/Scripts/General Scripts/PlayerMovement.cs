@@ -11,8 +11,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float jumpSpeed = 10f;
 
-    private bool grounded;
+    [HideInInspector] public bool grounded;
     [SerializeField] private LayerMask GroundLayer;
+    [SerializeField] private LayerMask Icelayer;
     [SerializeField] private float raycastRange;
     private void Start()
     {
@@ -37,6 +38,13 @@ public class PlayerMovement : MonoBehaviour
         var hit = Physics2D.Raycast(transform.position, Vector2.down, raycastRange, GroundLayer);
 
         if (hit.collider != null)
+        {
+            grounded = true;
+        }
+        
+        var hitice = Physics2D.Raycast(transform.position, Vector2.down, raycastRange, Icelayer);
+
+        if (hitice.collider != null)
         {
             grounded = true;
         }

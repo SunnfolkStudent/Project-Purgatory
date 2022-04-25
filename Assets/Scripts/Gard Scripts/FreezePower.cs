@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FreezePower : MonoBehaviour
+public class FreezePower : MonoBehaviour // NEED TO FIX THE BUGWHERE IF THE HITBOX GOES OUSIDE THE ICE IT WONT TRIGGER ANYMORE
 {
 
     public Input _Input;
@@ -11,9 +11,9 @@ public class FreezePower : MonoBehaviour
     private bool canFreeze;
     private bool canUnFreeze;
 
-    public ChangeStateScript waterFreeze;
-    
-    
+    [HideInInspector]public ChangeStateScript FreezableObject;
+
+
     void Start()
     {
         canFreeze = false;
@@ -25,12 +25,20 @@ public class FreezePower : MonoBehaviour
     {
         if ((canFreeze || canUnFreeze) && _Input.Magic)
         {
-            waterFreeze.ChangeState();
+            FreezableObject.ChangeState();
         }
     }
+    
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.gameObject.tag == "Water" || other.gameObject.tag == "Ice")
+        {
+            FreezableObject = other.gameObject.GetComponent<ChangeStateScript>();
+        }
+        
+        //-----------------------------------------------//
+        
         if (other.gameObject.tag == "Water")
         {
             canFreeze = true;
@@ -48,14 +56,8 @@ public class FreezePower : MonoBehaviour
         {
             canUnFreeze = false;
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Water" || other.gameObject.tag == "Ice")
-        {
-            waterFreeze = other.gameObject.GetComponent<ChangeStateScript>();
-        }
         
+        //----------------------------------------------//
     }
+    
 }
