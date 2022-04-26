@@ -14,6 +14,7 @@ public class LightPowerSpot : MonoBehaviour
     private bool isLightOn;
     public int LightRange;
     public LayerMask interactLayer;
+    public bool canBounceFurther;
 
     private Vector2 startPoint, Direction;
     int maxReflections = 100;
@@ -22,20 +23,26 @@ public class LightPowerSpot : MonoBehaviour
     const int Infinity = 999;
     public bool atLightPoint;
 
-    public readonly Vector2[] lightDirection = {Vector2.zero, Vector2.left, Vector2.up, Vector2.right};
+    [SerializeField] private Animator _animator;
+    private bool canAnimate;
+    
+    
+    public Vector2[] lightDirection = {Vector2.zero, Vector2.left, Vector2.up, Vector2.right};
 
     private void Start()
     {
         DisableLight();
         startPoint = lightPoint.transform.position;
         Points = new List<Vector3>();
+        canAnimate = true;
     }
 
     private void Update()
     {
-        LightController();
         if (!atLightPoint) return;
-    
+        
+        LightController();
+        
         if (isLightOn)
         {
             EnableLight();
@@ -53,7 +60,7 @@ public class LightPowerSpot : MonoBehaviour
             Movement.canInput = true;
         }
 
-        if (_input.MoveVector.x != 0 || _input.MoveVector.y > 0) 
+        if ((_input.MoveVector.x != 0 || _input.MoveVector.y > 0) && !Movement.canInput) 
         {
             RayCast();
         }
@@ -96,7 +103,7 @@ public class LightPowerSpot : MonoBehaviour
     private void RayCast()
     {
         var hitData = Physics2D.Raycast(lightPoint.position, _input.MoveVector, LightRange, interactLayer);
-        Debug.DrawRay(ray.direction, _input.MoveVector * LightRange, Color.magenta);
+        Debug.DrawRay(lightPoint.position, _input.MoveVector * LightRange, Color.magenta);
         currentReflections = 0;
         Points.Clear();
         Points.Add(startPoint);
@@ -105,59 +112,71 @@ public class LightPowerSpot : MonoBehaviour
         {
             ReflectFurther(startPoint, hitData);
         }
+        else if (hitData.transform == null)
+        {
+            // Nohing
+        }
         else
         {
             Points.Add(startPoint + (Direction - startPoint).normalized * Infinity);
         }
+        
 
         LineRenderer.positionCount = Points.Count;
         LineRenderer.SetPositions(Points.ToArray());
-
-        /*
-        Mesh mesh = new Mesh();
-        mesh.name = gameObject.name + " mesh";
-        LineRenderer.BakeMesh(mesh);
-        mesh.Optimize();
-        mesh.RecalculateNormals();
-        mesh.RecalculateBounds();
-        mesh.RecalculateTangents(); 
-
-        gameObject.GetComponentInChildren<MeshCollider>().sharedMesh = mesh; 
-        */
     }
     private void ReflectFurther(Vector2 origin, RaycastHit2D hitData)
     {
-        if (currentReflections > maxReflections) return;
-        ray = new Ray2D(lightPoint.position, _input.MoveVector);
         Points.Add(hitData.point);
+        if (currentReflections > maxReflections) return;
+        
+        ray = new Ray2D(lightPoint.position, _input.MoveVector);
         currentReflections++;
 
+        if (hitData.transform.CompareTag("LightTrigger")) return;
+        
         Vector2 inDirection = (hitData.point - origin).normalized;
         Vector2 newDirection = Vector2.Reflect(inDirection, hitData.normal);
+        
 
         var newHitData = Physics2D.Raycast(hitData.point + (newDirection * 0.0001f), newDirection * 100, LightRange);
         if (newHitData)
         {
-            ReflectFurther(hitData.point, newHitData);
-            ray = new Ray2D(newHitData.point, Vector2.Reflect(ray.direction, newHitData.normal));
+            
+            if (newHitData.transform.CompareTag("LightTrigger") && canAnimate)
+            {
+                print("This works");
+                _animator.Play("OpenDoor");
+                canAnimate = false;
+                canBounceFurther = false;
+            }
+            else
+            {
+                print(hitData.transform.name);
+                ReflectFurther(hitData.point, newHitData);
+                
+                ray = new Ray2D(newHitData.point, Vector2.Reflect(newDirection, newHitData.normal));
+                Debug.DrawRay(newHitData.point, Vector2.Reflect(newDirection, newHitData.normal) * LightRange, Color.red);
+            }
         }
         else
         {
             Points.Add(hitData.point + newDirection * LightRange);
+            canBounceFurther = true;
         }
     }
-    
-    
-    private void OnTriggerStay2D(Collider2D other)
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
-            print("Can use light now");
             atLightPoint = true;
         }
-        else
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
         {
-            print("car go broo");
             atLightPoint = false;
         }
     }
