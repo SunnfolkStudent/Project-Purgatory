@@ -6,15 +6,17 @@ using UnityEngine.Tilemaps;
 
 public class ChangeStateScript : MonoBehaviour
 {
-
-    public FreezePower _FreezePower;
-    public Tilemap _WaterIceTimap;
-
     [HideInInspector] private bool isIce;
     [HideInInspector] private bool isWater;
 
     public GameObject IceVisualTile;
-    
+
+    [SerializeField] private PhysicsMaterial2D iceMaterial;
+    [SerializeField] private PhysicsMaterial2D defultMaterial;
+    [SerializeField] private CompositeCollider2D waterCollider;
+
+    public bool canFreezeObject; 
+
     private void Start()
     {
         isIce = false;
@@ -29,8 +31,6 @@ public class ChangeStateScript : MonoBehaviour
 
     public void ChangeState()
     {
-        print("frrrrreeeeezzzeee");
-        
         if (isWater)
         {
             gameObject.tag = "Ice";
@@ -50,8 +50,8 @@ public class ChangeStateScript : MonoBehaviour
             int waterLayer = LayerMask.NameToLayer("Water");
             gameObject.layer = waterLayer;
             gameObject.GetComponent<CompositeCollider2D>().isTrigger = true;
+            waterCollider.sharedMaterial = defultMaterial;
             IceVisualTile.SetActive(false);
-            print("water");
         }
 
         if (gameObject.tag == "Ice")
@@ -61,8 +61,20 @@ public class ChangeStateScript : MonoBehaviour
             int iceLayer = LayerMask.NameToLayer("Ice");
             gameObject.layer = iceLayer;
             gameObject.GetComponent<CompositeCollider2D>().isTrigger = false;
+            waterCollider.sharedMaterial = iceMaterial;
             IceVisualTile.SetActive(true);
-            print("ice");
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "FreezePowerHitbox")
+        {
+            canFreezeObject = true;
+        }
+        else
+        {
+            canFreezeObject = false;
         }
     }
 }
