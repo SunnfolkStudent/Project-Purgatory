@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LightBeamMaterial
+  m_Name: NewLightPowerMaterial
   m_Shader: {fileID: -6465566751694194690, guid: 0ff7f87052933d84081727c3c1543be8, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -34,11 +34,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _LightEdgeSmoothness: 40
-    - _LightScale: 14.35
-    - _LightThickness: 31.39
+    - _LightEdgeSmoothness: 10
+    - _LightScale: 1.5
     - _LineThickness: 30
     m_Colors:
-    - _Color: {r: 1, g: 0.9531019, b: 0.0047169924, a: 0}
-    - _LightSpeed: {r: 10, g: 0, b: 0, a: 0}
+    - _Color: {r: 1, g: 0.8773559, b: 0, a: 0}
+    - _LightSpeed: {r: -1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

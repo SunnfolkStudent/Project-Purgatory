@@ -11,14 +11,14 @@ public class LightPowerSpot : MonoBehaviour
     private Ray2D ray;
     public Transform lightPoint;
     private bool isLightOn;
-    private int LightRange;
+    private int LightRange = 100;
     public LayerMask interactLayer;
 
     [SerializeField] private Vector2 startPoint, Direction;
-    private int maxReflections = 100;
-    private int currentReflections = 0;
+    int maxReflections = 100;
+    int currentReflections = 0;
     private List<Vector3> Points;
-    private const int Infinity = 999;
+    const int Infinity = 999;
     private bool atLightPoint;
     private bool firstBounce = true;
 
@@ -28,8 +28,8 @@ public class LightPowerSpot : MonoBehaviour
     [SerializeField] private EmpowermentPoint empower = null;
     
     
-    private Vector2[] lightDirection = {Vector2.zero, Vector2.left, Vector2.up, Vector2.right};
-    private int index;
+    public Vector2[] lightDirection = {Vector2.zero, Vector2.left, Vector2.up, Vector2.right};
+    public int index;
 
     private void Start()
     {
