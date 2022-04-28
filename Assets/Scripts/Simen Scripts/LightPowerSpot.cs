@@ -3,7 +3,6 @@ using Assets.Scripts.General_Scripts;
 using UnityEngine;
 using Input = Assets.Scripts.General_Scripts.Input;
 
-
 public class LightPowerSpot : MonoBehaviour
 {
     [SerializeField] private Input _input;
@@ -12,24 +11,25 @@ public class LightPowerSpot : MonoBehaviour
     private Ray2D ray;
     public Transform lightPoint;
     private bool isLightOn;
-    public int LightRange;
+    private int LightRange;
     public LayerMask interactLayer;
 
     [SerializeField] private Vector2 startPoint, Direction;
-    int maxReflections = 100;
-    int currentReflections = 0;
+    private int maxReflections = 100;
+    private int currentReflections = 0;
     private List<Vector3> Points;
-    const int Infinity = 999;
-    public bool atLightPoint;
-    public bool firstBounce = true;
+    private const int Infinity = 999;
+    private bool atLightPoint;
+    private bool firstBounce = true;
 
+    public string[] tags;
     [SerializeField] private Animator _animator;
     [SerializeField] private SCRUB canAnimateBool = null;
     [SerializeField] private EmpowermentPoint empower = null;
     
     
-    public Vector2[] lightDirection = {Vector2.zero, Vector2.left, Vector2.up, Vector2.right};
-    public int index;
+    private Vector2[] lightDirection = {Vector2.zero, Vector2.left, Vector2.up, Vector2.right};
+    private int index;
 
     private void Start()
     {
@@ -113,17 +113,23 @@ public class LightPowerSpot : MonoBehaviour
         Points.Clear();
         Points.Add(startPoint);
         
-        if (hitData.transform.CompareTag("Mirror") || hitData.transform.CompareTag("Ice") || hitData.transform.CompareTag("LightPowerUp"))
+        print(hitData.transform.name);
+
+        
+        IsTagTrue(hitData);
+        
+        /*
+        if (hitData.transform.CompareTag("Mirror") || hitData.transform.CompareTag("Ice") || hitData.transform.CompareTag("LightPowerUp") || hitData.transform.CompareTag("Ground") || hitData.transform.CompareTag("LightTrigger"))
         {
             print("Running");
             ReflectFurther(startPoint, hitData);
-            
-        }
-        else if (hitData.transform.CompareTag("LightTrigger") || hitData.transform.CompareTag("Ground"))
+        }*/
+        if (IsTagTrue(hitData))
         {
-            return;
+            print("Running");
+            ReflectFurther(startPoint, hitData);
         }
-        else if (hitData.transform == null)
+        else if (hitData.transform.CompareTag("LightTrigger"))
         {
             return;
         }
@@ -132,10 +138,22 @@ public class LightPowerSpot : MonoBehaviour
             Points.Add(startPoint + (Direction - startPoint).normalized * Infinity);
         }
         
-
         LineRenderer.positionCount = Points.Count;
         LineRenderer.SetPositions(Points.ToArray());
     }
+
+    private bool IsTagTrue(RaycastHit2D hitData)
+    {
+        for (int i = 0; i < tags.Length; i++)
+        {
+            if (hitData.transform.CompareTag(tags[i]))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void ReflectFurther(Vector2 origin, RaycastHit2D hitData)
     {
         Points.Add(hitData.point);
@@ -163,7 +181,6 @@ public class LightPowerSpot : MonoBehaviour
             }
             else
             {
-                print(hitData.transform.name);
                 ReflectFurther(hitData.point, newHitData);
                 
                 ray = new Ray2D(newHitData.point, Vector2.Reflect(newDirection, newHitData.normal));
