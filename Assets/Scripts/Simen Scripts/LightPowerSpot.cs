@@ -23,7 +23,7 @@ public class LightPowerSpot : MonoBehaviour
     public bool atLightPoint;
 
     [SerializeField] private Animator _animator;
-    [SerializeField] private SCRUB canAnimateBool;
+    [SerializeField] private SCRUB canAnimateBool = null;
     [SerializeField] private EmpowermentPoint empower;
     
     
@@ -106,7 +106,6 @@ public class LightPowerSpot : MonoBehaviour
     private void RayCast()
     {
         var hitData = Physics2D.Raycast(lightPoint.position, lightDirection[index], LightRange, interactLayer);
-        Debug.DrawRay(lightPoint.position, lightDirection[index] * LightRange, Color.magenta);
         currentReflections = 0;
         Points.Clear();
         Points.Add(startPoint);

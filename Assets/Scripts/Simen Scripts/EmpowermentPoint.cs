@@ -18,8 +18,8 @@ public class EmpowermentPoint : MonoBehaviour
     public Vector2 vector;
     public int lightRange;
     
-    private Animator animator;
-    [SerializeField] private SCRUB canAnimateBool;
+    [SerializeField] private Animator animator;
+    [SerializeField] private SCRUB canAnimateBool = null;
 
     public bool CanEmpowerLight;
     
@@ -68,6 +68,7 @@ public class EmpowermentPoint : MonoBehaviour
     private void RayCast()
     {
         var hitData = Physics2D.Raycast(spawnPointForLight.position, vector, lightRange, interactLayer);
+        Debug.DrawRay(spawnPointForLight.position, vector * lightRange, Color.red);
         currentReflections = 0;
         Points.Clear();
         Points.Add(startPoint);
@@ -104,12 +105,17 @@ public class EmpowermentPoint : MonoBehaviour
         
 
         var newHitData = Physics2D.Raycast(hitData.point + (newDirection * 0.0001f), newDirection * 100, lightRange);
+        Debug.DrawRay(hitData.point + (newDirection * 0.0001f), (newDirection * 100) * lightRange, Color.black);
         if (newHitData)
         {
             if (newHitData.transform.CompareTag("LightTrigger") && canAnimateBool.canAnimate)
             {
                 animator.Play("OpenDoor");
                 canAnimateBool.canAnimate = false;
+            }
+            else if (newHitData.transform.CompareTag("Ice"))
+            {
+                // Do what is should when it hits ice here.
             }
             else
             {
