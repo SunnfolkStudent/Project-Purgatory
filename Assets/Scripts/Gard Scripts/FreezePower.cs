@@ -8,7 +8,7 @@ public class FreezePower : MonoBehaviour
 
     public Input _Input;
 
-    [HideInInspector]public ChangeStateScript FreezableObject;
+    [HideInInspector] public ChangeStateScript FreezableObject;
     
    
     void Update()
@@ -26,6 +26,12 @@ public class FreezePower : MonoBehaviour
         {
             FreezableObject = other.gameObject.GetComponent<ChangeStateScript>();
         }
+
+        if (other.gameObject.tag == "WaterStream" || other.gameObject.tag == "WaterStreamIce")
+        {
+            FreezableObject = other.gameObject.GetComponent<ChangeStateScript>();
+        }
+        
     }
     
 }

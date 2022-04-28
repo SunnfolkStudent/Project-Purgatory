@@ -8,6 +8,11 @@ TagManager:
   - Ice
   - Ground
   - FreezePowerHitbox
+  - InteractRange
+  - WaterLever
+  - WaterStream
+  - WaterStreamIce
+  - ResetZone
   layers:
   - Default
   - TransparentFX
@@ -17,7 +22,7 @@ TagManager:
   - UI
   - Water
   - Ice
-  - 
+  - ResetLayer
   - 
   - 
   - 
