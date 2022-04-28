@@ -33,6 +33,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "FlipMirror",
+                    "type": "Button",
+                    "id": "475fdd69-9f18-4fb5-8713-747ed2ecc3ae",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Light",
                     "type": "Button",
                     "id": "64aadca4-17d7-4dca-a30f-c285adf12955",
@@ -172,6 +181,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Light",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cb1f9584-61ac-4172-93e3-0aa991b31d4d",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FlipMirror",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1badd3e6-c6a6-415f-8c2e-734e3edfca8b",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FlipMirror",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

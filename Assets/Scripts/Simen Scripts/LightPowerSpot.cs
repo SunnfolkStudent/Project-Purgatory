@@ -15,16 +15,17 @@ public class LightPowerSpot : MonoBehaviour
     public int LightRange;
     public LayerMask interactLayer;
 
-    private Vector2 startPoint, Direction;
+    [SerializeField] private Vector2 startPoint, Direction;
     int maxReflections = 100;
     int currentReflections = 0;
     private List<Vector3> Points;
     const int Infinity = 999;
     public bool atLightPoint;
+    public bool firstBounce = true;
 
     [SerializeField] private Animator _animator;
     [SerializeField] private SCRUB canAnimateBool = null;
-    [SerializeField] private EmpowermentPoint empower;
+    [SerializeField] private EmpowermentPoint empower = null;
     
     
     public Vector2[] lightDirection = {Vector2.zero, Vector2.left, Vector2.up, Vector2.right};
@@ -68,6 +69,7 @@ public class LightPowerSpot : MonoBehaviour
         else
         {
             LineRenderer.positionCount = 1;
+            if (!empower) return;
             empower.CanEmpowerLight = false;
         }
     }
@@ -90,6 +92,7 @@ public class LightPowerSpot : MonoBehaviour
         {
             LineRenderer.enabled = false;
             LineRenderer.positionCount = 1;
+            if (empower == null) return;
             empower.CanEmpowerLight = false;
         }
     
@@ -109,14 +112,20 @@ public class LightPowerSpot : MonoBehaviour
         currentReflections = 0;
         Points.Clear();
         Points.Add(startPoint);
-
+        
         if (hitData.transform.CompareTag("Mirror") || hitData.transform.CompareTag("Ice") || hitData.transform.CompareTag("LightPowerUp"))
         {
+            print("Running");
             ReflectFurther(startPoint, hitData);
+            
+        }
+        else if (hitData.transform.CompareTag("LightTrigger") || hitData.transform.CompareTag("Ground"))
+        {
+            return;
         }
         else if (hitData.transform == null)
         {
-            // Nohing
+            return;
         }
         else
         {
@@ -134,16 +143,19 @@ public class LightPowerSpot : MonoBehaviour
         
         ray = new Ray2D(lightPoint.position, lightDirection[index]);
         currentReflections++;
-
-        if (hitData.transform.CompareTag("LightTrigger") || hitData.transform.CompareTag("LightPowerUp")) return;
         
         Vector2 inDirection = (hitData.point - origin).normalized;
         Vector2 newDirection = Vector2.Reflect(inDirection, hitData.normal);
+        
+        if (hitData.transform.CompareTag("LightTrigger") || hitData.transform.CompareTag("LightPowerUp") || hitData.transform.CompareTag("Ground")) return;
+
         
 
         var newHitData = Physics2D.Raycast(hitData.point + (newDirection * 0.0001f), newDirection * 100, LightRange);
         if (newHitData)
         {
+            if ((hitData.transform.CompareTag("LightTrigger") || hitData.transform.CompareTag("LightPowerUp") || hitData.transform.CompareTag("Ground")) && !firstBounce) return;
+
             if (newHitData.transform.CompareTag("LightTrigger") && canAnimateBool.canAnimate)
             {
                 _animator.Play("OpenDoor");
@@ -155,6 +167,7 @@ public class LightPowerSpot : MonoBehaviour
                 ReflectFurther(hitData.point, newHitData);
                 
                 ray = new Ray2D(newHitData.point, Vector2.Reflect(newDirection, newHitData.normal));
+                firstBounce = false;
             }
             
             if (newHitData.transform.CompareTag("LightPowerUp"))
@@ -179,10 +192,12 @@ public class LightPowerSpot : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            print("No more light");
             atLightPoint = false;
             index = 0;
-            empower.CanEmpowerLight = false;
             DisableLight();
+            if (!empower) return;
+            empower.CanEmpowerLight = false;
         }
     }
 }

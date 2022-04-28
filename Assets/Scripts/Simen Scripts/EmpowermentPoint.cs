@@ -19,7 +19,7 @@ public class EmpowermentPoint : MonoBehaviour
     public int lightRange;
     
     [SerializeField] private Animator animator;
-    [SerializeField] private SCRUB canAnimateBool = null;
+    [SerializeField] private SCRUB canAnimateBool;
 
     public bool CanEmpowerLight;
     
@@ -68,7 +68,6 @@ public class EmpowermentPoint : MonoBehaviour
     private void RayCast()
     {
         var hitData = Physics2D.Raycast(spawnPointForLight.position, vector, lightRange, interactLayer);
-        Debug.DrawRay(spawnPointForLight.position, vector * lightRange, Color.red);
         currentReflections = 0;
         Points.Clear();
         Points.Add(startPoint);
@@ -105,7 +104,6 @@ public class EmpowermentPoint : MonoBehaviour
         
 
         var newHitData = Physics2D.Raycast(hitData.point + (newDirection * 0.0001f), newDirection * 100, lightRange);
-        Debug.DrawRay(hitData.point + (newDirection * 0.0001f), (newDirection * 100) * lightRange, Color.black);
         if (newHitData)
         {
             if (newHitData.transform.CompareTag("LightTrigger") && canAnimateBool.canAnimate)

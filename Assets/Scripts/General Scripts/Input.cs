@@ -24,6 +24,7 @@ namespace Assets.Scripts.General_Scripts
         [HideInInspector] public bool Jump;
         [HideInInspector] public bool Magic;
         [HideInInspector] public bool Light;
+        [HideInInspector] public bool Flip;
 
         void Update()
         {
@@ -31,6 +32,7 @@ namespace Assets.Scripts.General_Scripts
             Jump = _Input.Player.Jump.triggered;
             Magic = _Input.Player.Magic.triggered;
             Light = _Input.Player.Light.triggered;
+            Flip = _Input.Player.FlipMirror.triggered;
         }
     }
 }

@@ -55,6 +55,15 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""FlipMirror"",
+                    ""type"": ""Button"",
+                    ""id"": ""475fdd69-9f18-4fb5-8713-747ed2ecc3ae"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Light"",
                     ""type"": ""Button"",
                     ""id"": ""64aadca4-17d7-4dca-a30f-c285adf12955"",
@@ -196,6 +205,28 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""action"": ""Light"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cb1f9584-61ac-4172-93e3-0aa991b31d4d"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FlipMirror"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1badd3e6-c6a6-415f-8c2e-734e3edfca8b"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FlipMirror"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -207,6 +238,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Magic = m_Player.FindAction("Magic", throwIfNotFound: true);
+        m_Player_FlipMirror = m_Player.FindAction("FlipMirror", throwIfNotFound: true);
         m_Player_Light = m_Player.FindAction("Light", throwIfNotFound: true);
     }
 
@@ -270,6 +302,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Magic;
+    private readonly InputAction m_Player_FlipMirror;
     private readonly InputAction m_Player_Light;
     public struct PlayerActions
     {
@@ -278,6 +311,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Magic => m_Wrapper.m_Player_Magic;
+        public InputAction @FlipMirror => m_Wrapper.m_Player_FlipMirror;
         public InputAction @Light => m_Wrapper.m_Player_Light;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -297,6 +331,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Magic.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMagic;
                 @Magic.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMagic;
                 @Magic.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMagic;
+                @FlipMirror.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFlipMirror;
+                @FlipMirror.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFlipMirror;
+                @FlipMirror.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFlipMirror;
                 @Light.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLight;
                 @Light.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLight;
                 @Light.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLight;
@@ -313,6 +350,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Magic.started += instance.OnMagic;
                 @Magic.performed += instance.OnMagic;
                 @Magic.canceled += instance.OnMagic;
+                @FlipMirror.started += instance.OnFlipMirror;
+                @FlipMirror.performed += instance.OnFlipMirror;
+                @FlipMirror.canceled += instance.OnFlipMirror;
                 @Light.started += instance.OnLight;
                 @Light.performed += instance.OnLight;
                 @Light.canceled += instance.OnLight;
@@ -325,6 +365,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnMagic(InputAction.CallbackContext context);
+        void OnFlipMirror(InputAction.CallbackContext context);
         void OnLight(InputAction.CallbackContext context);
     }
 }

@@ -10,6 +10,7 @@ TagManager:
   - LightTrigger
   - LightBeam
   - LightPowerUp
+  - Ice
   layers:
   - Default
   - TransparentFX
