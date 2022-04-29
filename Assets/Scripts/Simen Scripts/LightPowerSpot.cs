@@ -22,13 +22,12 @@ public class LightPowerSpot : MonoBehaviour
 
     public string[] tags;
     [SerializeField] private Animator _animator;
-    public AnimationClip animation = null;
+    [SerializeField] private string animations;
     [SerializeField] private SCRUB canAnimateBool = null;
     [SerializeField] private EmpowermentPoint empower = null;
     
     
     public Vector2[] lightDirection = {Vector2.zero, Vector2.left, Vector2.up, Vector2.right};
-  
     public int index;
 
     private void Start()
@@ -111,6 +110,7 @@ public class LightPowerSpot : MonoBehaviour
     private void RayCast()
     {
         var hitData = Physics2D.Raycast(lightPoint.position, lightDirection[index], LightRange, interactLayer);
+        Debug.DrawRay(lightPoint.position, lightDirection[index] * LightRange, Color.blue);
         currentReflections = 0;
         Points.Clear();
         Points.Add(startPoint);
@@ -123,6 +123,7 @@ public class LightPowerSpot : MonoBehaviour
             print("Running");
             ReflectFurther(startPoint, hitData);
         }*/
+        
         if (IsTagTrue(hitData))
         {
             print("Running");
@@ -130,7 +131,7 @@ public class LightPowerSpot : MonoBehaviour
         }
         else
         {
-            Points.Add(startPoint + (Direction - startPoint).normalized * Infinity);
+            Points.Add(startPoint + (lightDirection[index] - startPoint).normalized * Infinity);
         }
         
         LineRenderer.positionCount = Points.Count;
@@ -162,8 +163,6 @@ public class LightPowerSpot : MonoBehaviour
         
         if (hitData.transform.CompareTag("LightTrigger") || hitData.transform.CompareTag("LightPowerUp") || hitData.transform.CompareTag("Ground")) return;
 
-        
-
         var newHitData = Physics2D.Raycast(hitData.point + (newDirection * 0.0001f), newDirection * 100, LightRange);
         if (newHitData)
         {
@@ -171,7 +170,7 @@ public class LightPowerSpot : MonoBehaviour
 
             if (newHitData.transform.CompareTag("LightTrigger") && canAnimateBool.canAnimate)
             {
-                _animator.Play(animation.ToString());
+                _animator.Play(animations);
                 canAnimateBool.canAnimate = false;
             }
             else
