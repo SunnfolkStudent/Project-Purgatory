@@ -13,6 +13,8 @@ public class BoxPushing : MonoBehaviour
     [SerializeField] private Rigidbody2D _Rigidbody2D;
 
     private Vector2 startPosition;
+
+    public WaterStreamPushing _WaterStreamPushing;
     
     void Start()
     {
@@ -24,6 +26,11 @@ public class BoxPushing : MonoBehaviour
     void Update()
     {
         LockMovement();
+
+        if (_WaterStreamPushing.pushingBox)
+        {
+            print("jbikidbfkasd");
+        }
     }
 
     private void LockMovement()
@@ -39,9 +46,13 @@ public class BoxPushing : MonoBehaviour
             isOnIce = false;
         }
 
-        if (isOnIce)
+        if (isOnIce && !_WaterStreamPushing.pushingBox)
         {
-            _Rigidbody2D.constraints = RigidbodyConstraints2D.None;
+            _Rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+        else if (_WaterStreamPushing.pushingBox)
+        { 
+            _Rigidbody2D.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation; 
         }
         else
         {
@@ -53,7 +64,6 @@ public class BoxPushing : MonoBehaviour
     {
         if (other.gameObject.tag == "ResetZone")
         {
-            print("reset");
             gameObject.transform.position = startPosition;
         }
     }

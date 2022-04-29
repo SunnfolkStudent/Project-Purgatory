@@ -13,6 +13,8 @@ TagManager:
   - WaterStream
   - WaterStreamIce
   - ResetZone
+  - Box
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float decelerationForce = 200f;
     [SerializeField] private float decelerationAmount = 10f;
 
+   
     private void Start()
     {
         _Input = GetComponent<Input>();
@@ -173,5 +174,4 @@ public class PlayerMovement : MonoBehaviour
         
         
     }
-    
 }

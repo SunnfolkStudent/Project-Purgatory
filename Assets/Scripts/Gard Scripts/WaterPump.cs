@@ -5,55 +5,98 @@ using UnityEngine;
 
 public class WaterPump : MonoBehaviour
 {
-    [SerializeField] private GameObject WaterStream;
-    [SerializeField] private GameObject WaterStreamIce;
-    
     [SerializeField] private GameObject WaterStream1;
     [SerializeField] private GameObject WaterStreamIce1;
     
-    
+    [SerializeField] private GameObject WaterStream2;
+    [SerializeField] private GameObject WaterStreamIce2;
 
-    private bool canFlipSwitch;
-    private bool canUnflipSwitch;
+    private bool canTurnOnNr1;
+    private bool canTurnOffNr1;
+    private bool canTurnOnNr2;
+    private bool canTurnOffNr2;
 
     public Input _Input;
 
     private void Start()
     {
-        WaterStream.gameObject.SetActive(false);
-        WaterStreamIce.gameObject.SetActive(false);
+        WaterStream1.gameObject.SetActive(false);
+        WaterStreamIce1.gameObject.SetActive(false);
+        WaterStream2.gameObject.SetActive(false);
+        WaterStreamIce2.gameObject.SetActive(false);
+        
+        canTurnOnNr1 = false;
+        canTurnOnNr2 = false;
+        canTurnOffNr1 = false;
+        canTurnOffNr2 = false;
     }
 
     private void Update()
     {
-        if (canFlipSwitch && _Input.Switch)
+        SwitchPumpStreams();
+    }
+    
+    
+    private void SwitchPumpStreams()
+    {
+        if (canTurnOnNr1 && !canTurnOnNr2 && !canTurnOffNr1 && !canTurnOffNr2 && _Input.Switch) // 1stage
         {
-            WaterStream.gameObject.SetActive(true);
-            WaterStream.gameObject.tag = "WaterStream";
-            canFlipSwitch = false;
-            canUnflipSwitch = true;
+            WaterStream1.gameObject.SetActive(true);
+            WaterStream1.gameObject.tag = "WaterStream";
+            
+            canTurnOnNr1 = false;
+            canTurnOnNr2 = true;
+            canTurnOffNr1 = true;
+            canTurnOffNr2 = false;
         }
-        else if (canUnflipSwitch && _Input.Switch)
+        else if (!canTurnOnNr1 && canTurnOnNr2 && canTurnOffNr1 && !canTurnOffNr2 && _Input.Switch) //2stage
         {
-            WaterStream.gameObject.SetActive(false);
-            canFlipSwitch = true;
-            canUnflipSwitch = false;
+            WaterStream1.gameObject.SetActive(false);
+            WaterStream2.gameObject.SetActive(true);
+            WaterStream2.gameObject.tag = "WaterStream";
+            
+            canTurnOnNr1 = false;
+            canTurnOnNr2 = false;
+            canTurnOffNr1 = false;
+            canTurnOffNr2 = true;
+        }
+        else if (!canTurnOnNr1 && !canTurnOnNr2 && !canTurnOffNr1 && canTurnOffNr2 && _Input.Switch) //3stage
+        {
+            WaterStream2.gameObject.SetActive(false);
+            
+            
+            canTurnOnNr1 = true;
+            canTurnOnNr2 = false;
+            canTurnOffNr1 = false;
+            canTurnOffNr2 = false;
         }
     }
-
+    
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "InteractRange")
         {
-            if (WaterStream.gameObject.activeInHierarchy)
+            if (!WaterStream1.gameObject.activeInHierarchy && !WaterStream2.gameObject.activeInHierarchy)
             {
-                canFlipSwitch = false;
-                canUnflipSwitch = true;
+                canTurnOnNr1 = true;
+                canTurnOnNr2 = false;
+                canTurnOffNr1 = false;
+                canTurnOffNr2 = false;
             }
-            else if (!WaterStream.gameObject.activeInHierarchy)
+            else if (WaterStream1.gameObject.activeInHierarchy && !WaterStream2.gameObject.activeInHierarchy)
             {
-                canFlipSwitch = true;
-                canUnflipSwitch = false;
+                canTurnOnNr1 = false;
+                canTurnOnNr2 = true;
+                canTurnOffNr1 = true;
+                canTurnOffNr2 = false;
+            }
+            else if (!WaterStream1.gameObject.activeInHierarchy && WaterStream2.gameObject.activeInHierarchy)
+            {
+                canTurnOnNr1 = false;
+                canTurnOnNr2 = false;
+                canTurnOffNr1 = false;
+                canTurnOffNr2 = true;
             }
         }
     }
@@ -62,8 +105,8 @@ public class WaterPump : MonoBehaviour
     {
         if (other.gameObject.tag == "InteractRange")
         {
-            canFlipSwitch = false;
-            canUnflipSwitch = false;
+            canTurnOnNr1 = false;
+            canTurnOffNr1 = false;
         } 
     }
 }
