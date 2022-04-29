@@ -1,20 +1,221 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="bdb2823b-e0aa-4030-8bbf-2f4ce0a66323" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/3LightDoor.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/3LightDoor.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FirstDoorInLight.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FirstDoorInLight.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/puzzle door closed left 1.controller" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/puzzle door closed left 1.controller.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/puzzle door closed left.controller" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/puzzle door closed left.controller.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Project-Purgatory/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project-Purgatory/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/animations/Door.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/animations/Door.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Zone A.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Zone A.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Simen Scripts/LightPowerSpot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Simen Scripts/LightPowerSpot.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gardlayout.wlt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gardlayout.wlt.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/DefultPhysicsMaterial.physicsMaterial2D" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/DefultPhysicsMaterial.physicsMaterial2D.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/IceSlider.physicsMaterial2D" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/IceSlider.physicsMaterial2D.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/NoSpiderManEffect.physicsMaterial2D" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/NoSpiderManEffect.physicsMaterial2D.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/SlopeIce.physicsMaterial2D" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/SlopeIce.physicsMaterial2D.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/glass_box.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/glass_box.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/FreezePuzzles.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/FreezePuzzles/FreezeMainPuzzle.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/FreezePuzzles/FreezeMainPuzzle.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/FreezePuzzles/FreezeTutorial1.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/FreezePuzzles/FreezeTutorial1.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/FreezePuzzles/FreezeTutorial2.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/FreezePuzzles/FreezeTutorial2.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/FreezePuzzles/FreezeTutorial3.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/FreezePuzzles/FreezeTutorial3.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/Ground.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/Ground.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/New Palette.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/New Palette.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/Slope.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/Slope.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/Square.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/Square.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/box.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/box.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/box.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/box.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/glass_box.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/glass_box.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/glass_box.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/glass_box.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_0.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_0.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_1.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_1.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_10.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_10.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_11.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_11.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_12.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_12.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_13.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_13.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_14.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_14.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_15.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_15.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_16.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_16.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_17.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_17.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_18.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_18.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_19.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_19.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_2.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_2.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_20.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_20.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_21.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_21.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_22.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_22.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_23.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_23.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_24.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_24.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_25.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_25.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_26.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_26.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_27.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_27.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_28.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_28.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_29.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_29.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_3.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_3.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_30.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_30.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_31.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_31.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_32.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_32.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_33.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_33.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_34.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_34.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_35.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_35.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_36.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_36.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_37.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_37.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_38.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_38.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_39.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_39.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_4.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_4.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_40.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_40.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_41.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_41.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_42.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_42.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_43.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_43.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_44.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_44.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_45.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_45.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_46.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_46.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_47.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_47.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_48.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_48.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_49.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_49.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_5.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_5.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_50.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_50.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_51.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_51.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_52.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_52.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_53.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_53.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_54.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_54.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_55.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_55.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_56.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_56.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_57.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_57.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_58.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_58.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_59.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_59.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_6.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_6.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_60.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_60.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_61.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_61.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_62.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_62.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_63.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_63.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_64.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_64.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_65.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_65.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_7.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_7.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_8.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_8.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_9.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Random scrap/unknown_9.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Gard Stuff/IceSprite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Gard Stuff/IceSprite.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Gard Stuff/WaterSprite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Gard Stuff/WaterSprite.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gard Scripts/BoxPushing.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gard Scripts/BoxPushing.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gard Scripts/ChangeStateScript.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gard Scripts/ChangeStateScript.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gard Scripts/ChangeStateStreamScript.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gard Scripts/ChangeStateStreamScript.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gard Scripts/CheckpointSystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gard Scripts/CheckpointSystem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gard Scripts/DoorUnlocker.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gard Scripts/DoorUnlocker.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gard Scripts/PressurePlate.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gard Scripts/PressurePlate.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gard Scripts/PressurePlatePlayer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gard Scripts/PressurePlatePlayer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gard Scripts/WaterPump.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gard Scripts/WaterPump.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gard Scripts/WaterStreamPushing.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gard Scripts/WaterStreamPushing.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Tile Palette/unknown.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Tile Palette/unknown.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Water.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Water.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Wather_pipes1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Project-Purgatory/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project-Purgatory/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/PlayerInputs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/PlayerInputs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/PlayerInputs.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/PlayerInputs.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Gard Stuff/GardTestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Gard Stuff/GardTestScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gard Scripts/FreezePower.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gard Scripts/FreezePower.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/General Scripts/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/General Scripts/PlayerMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Random scrap/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Random scrap/UniversalRenderPipelineGlobalSettings.asset.meta" afterDir="false" />
+=======
+    <list default="true" id="54d97825-5f94-449b-b22d-3376482ae2f8" name="Changes" comment="">
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,9 +234,10 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Simen Scripts/EmpowermentPoint.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Simen Scripts/RotateMirror.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Simen Scripts/SCRUB.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Simen Scripts/EmpowermentPoint.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../Github/ProjectBomb/Assets/Scripts/Checkpoint.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Simen Scripts/UI/OptionsMenu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Simen Scripts/UI/TextManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Simen Scripts/UI/UI.cs" root0="FORCE_HIGHLIGHTING" />
@@ -51,17 +253,6 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Discover.Launch.Via.Unity": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "nodejs_package_manager_path": "npm",
-    "rider.run.widget.enabled.cache": "false",
-    "vue.rearranger.settings.migration": "true"
-  }
-}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.0f1\Editor\Unity.exe" />
@@ -102,7 +293,7 @@
       <updated>1650888043315</updated>
       <workItem from="1650888049227" duration="3686000" />
       <workItem from="1650909623823" duration="29300000" />
-      <workItem from="1651137905688" duration="36608000" />
+      <workItem from="1651137905688" duration="30653000" />
     </task>
     <servers />
   </component>
@@ -122,6 +313,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

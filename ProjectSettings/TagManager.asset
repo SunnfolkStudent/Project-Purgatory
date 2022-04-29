@@ -4,13 +4,17 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ground
-  - Mirror
-  - LightPoint
-  - LightTrigger
-  - LightBeam
-  - LightPowerUp
+  - Water
   - Ice
+  - Ground
+  - FreezePowerHitbox
+  - InteractRange
+  - WaterLever
+  - WaterStream
+  - WaterStreamIce
+  - ResetZone
+  - Box
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
@@ -18,9 +22,9 @@ TagManager:
   - Ground
   - Water
   - UI
-  - Bloom
-  - LightInteract
-  - LightTrigger
+  - Water
+  - Ice
+  - ResetLayer
   - 
   - 
   - 
