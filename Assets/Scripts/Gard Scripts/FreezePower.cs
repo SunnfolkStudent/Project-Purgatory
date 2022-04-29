@@ -1,19 +1,37 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.Gard_Scripts
+public class FreezePower : MonoBehaviour
 {
-    public class FreezePower : MonoBehaviour
-    {
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
 
-        // Update is called once per frame
-        void Update()
+    public Input _Input;
+
+    [HideInInspector] public ChangeStateScript FreezableObject;
+    
+   
+    void Update()
+    {
+        if (FreezableObject.canFreezeObject && _Input.Magic)
         {
-        
+            FreezableObject.ChangeState();
         }
     }
+    
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Water" || other.gameObject.tag == "Ice")
+        {
+            FreezableObject = other.gameObject.GetComponent<ChangeStateScript>();
+        }
+
+        if (other.gameObject.tag == "WaterStream" || other.gameObject.tag == "WaterStreamIce")
+        {
+            FreezableObject = other.gameObject.GetComponent<ChangeStateScript>();
+        }
+        
+    }
+    
 }
