@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="bdb2823b-e0aa-4030-8bbf-2f4ce0a66323" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/Assets/Gardlayout.wlt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Assets/Gardlayout.wlt.meta" afterDir="false" />
@@ -210,6 +211,9 @@
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/General Scripts/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/General Scripts/PlayerMovement.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Random scrap/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Random scrap/UniversalRenderPipelineGlobalSettings.asset.meta" afterDir="false" />
+=======
+    <list default="true" id="54d97825-5f94-449b-b22d-3376482ae2f8" name="Changes" comment="">
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
