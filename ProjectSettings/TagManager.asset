@@ -15,6 +15,13 @@ TagManager:
   - ResetZone
   - Box
   - Checkpoint
+  - LightBeam
+  - LightPoint
+  - Mirror
+  - LightTrigger
+  - TPtoZoneA
+  - TPtoZoneB
+  - TPtoZoneHUB
   layers:
   - Default
   - TransparentFX

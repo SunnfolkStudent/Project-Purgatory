@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Input = Assets.Scripts.General_Scripts.Input;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Input _Input;
+    public Assets.Scripts.General_Scripts.Input _Input;
     public Rigidbody2D _Rigidbody2D;
 
     [SerializeField] private float moveSpeed = 10f;

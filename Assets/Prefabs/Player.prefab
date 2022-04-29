@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7426118430613474937}
   - component: {fileID: 7426118430613474822}
   - component: {fileID: 7426118430613474936}
+  - component: {fileID: 1055479385803922780}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -80,7 +81,8 @@ MonoBehaviour:
   MoveVector: {x: 0, y: 0}
   Jump: 0
   Magic: 0
-  Switch: 0
+  Light: 0
+  Flip: 0
 --- !u!50 &7426118430613474937
 Rigidbody2D:
   serializedVersion: 4
@@ -144,6 +146,18 @@ CapsuleCollider2D:
   m_Offset: {x: -0.023767233, y: -0.45960426}
   m_Size: {x: 0.92780924, y: 0.9994354}
   m_Direction: 0
+--- !u!114 &1055479385803922780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7426118430613474818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21d10f5c66cc1814ba19b4dadff3fde4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7426118431012980351
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,6 +170,7 @@ GameObject:
   - component: {fileID: 7426118431012980336}
   - component: {fileID: 7426118431012980337}
   - component: {fileID: 7426118431012980339}
+  - component: {fileID: 1291345957}
   m_Layer: 0
   m_Name: InteractRange
   m_TagString: InteractRange
@@ -272,6 +287,19 @@ MonoBehaviour:
   playerCurrentPosition: {x: 0, y: 0}
   _Rigidbody2D: {fileID: 7426118430613474937}
   Player: {fileID: 7426118430613474818}
+--- !u!114 &1291345957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7426118431012980351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e07b73fac33ff947bf1d61990bcfaa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _SceneController: {fileID: 1055479385803922780}
 --- !u!1 &7426118431276045049
 GameObject:
   m_ObjectHideFlags: 0

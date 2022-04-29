@@ -32,7 +32,7 @@ namespace Assets.Scripts.General_Scripts
             Jump = _Input.Player.Jump.triggered;
             Magic = _Input.Player.Magic.triggered;
             Light = _Input.Player.Light.triggered;
-            Flip = _Input.Player.FlipMirror.triggered;
+            Flip = _Input.Player.Interact.triggered;
         }
     }
 }

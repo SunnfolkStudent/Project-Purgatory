@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Input = Assets.Scripts.General_Scripts.Input;
 
 public class FreezePower : MonoBehaviour
 {
