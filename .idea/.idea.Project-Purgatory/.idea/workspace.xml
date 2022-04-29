@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bdb2823b-e0aa-4030-8bbf-2f4ce0a66323" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Simen Scripts/UI/OptionsMenu.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Simen Scripts/UI/OptionsMenu.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Master.mixer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Master.mixer" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/S-Stuff/Scens/Prototyping for light stuff.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/S-Stuff/Scens/Prototyping for light stuff.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/S-Stuff/Scens/UI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/S-Stuff/Scens/UI.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/HTOWERT SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/HTOWERT SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Character/Charecther_sprite.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Character/Charecther_sprite.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Objects/Zone A Objects/Empower point.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Objects/Zone A Objects/Empower point.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Simen Scripts/LightPowerSpot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Simen Scripts/LightPowerSpot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -95,7 +92,7 @@
       <updated>1650888043315</updated>
       <workItem from="1650888049227" duration="3686000" />
       <workItem from="1650909623823" duration="29300000" />
-      <workItem from="1651137905688" duration="18431000" />
+      <workItem from="1651137905688" duration="19241000" />
     </task>
     <servers />
   </component>

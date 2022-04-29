@@ -6,7 +6,6 @@ using Input = Assets.Scripts.General_Scripts.Input;
 public class LightPowerSpot : MonoBehaviour
 {
     [SerializeField] private Input _input;
-    [SerializeField] private PlayerMovement Movement;
     public LineRenderer LineRenderer;
     private Ray2D ray;
     public Transform lightPoint;
