@@ -10,7 +10,7 @@
                     "type": "Value",
                     "id": "d6db00af-71a4-4e5b-87f0-6126080a8a06",
                     "expectedControlType": "Vector2",
-                    "processors": "",
+                    "processors": "NormalizeVector2",
                     "interactions": "",
                     "initialStateCheck": true
                 },
@@ -33,7 +33,16 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Switch",
+                    "name": "FlipMirror",
+                    "type": "Button",
+                    "id": "475fdd69-9f18-4fb5-8713-747ed2ecc3ae",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Light",
                     "type": "Button",
                     "id": "64aadca4-17d7-4dca-a30f-c285adf12955",
                     "expectedControlType": "Button",
@@ -160,7 +169,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Switch",
+                    "action": "Light",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -171,7 +180,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Switch",
+                    "action": "Light",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cb1f9584-61ac-4172-93e3-0aa991b31d4d",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FlipMirror",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1badd3e6-c6a6-415f-8c2e-734e3edfca8b",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FlipMirror",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

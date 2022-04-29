@@ -1,18 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class FreezePower : MonoBehaviour
+namespace Assets.Scripts.Gard_Scripts
 {
-    // Start is called before the first frame update
-    void Start()
+    public class FreezePower : MonoBehaviour
     {
+        // Start is called before the first frame update
+        void Start()
+        {
         
-    }
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        // Update is called once per frame
+        void Update()
+        {
         
+        }
     }
 }

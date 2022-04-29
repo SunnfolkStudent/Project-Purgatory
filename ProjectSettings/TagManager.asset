@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - Mirror
+  - LightPoint
+  - LightTrigger
+  - LightBeam
+  - LightPowerUp
+  - Ice
   layers:
   - Default
   - TransparentFX
@@ -11,9 +18,9 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Bloom
+  - LightInteract
+  - LightTrigger
   - 
   - 
   - 
