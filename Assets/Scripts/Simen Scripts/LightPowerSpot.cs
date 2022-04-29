@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Assets.Scripts.General_Scripts;
 using UnityEngine;
 using Input = Assets.Scripts.General_Scripts.Input;
 
@@ -23,11 +22,13 @@ public class LightPowerSpot : MonoBehaviour
 
     public string[] tags;
     [SerializeField] private Animator _animator;
+    public AnimationClip animation = null;
     [SerializeField] private SCRUB canAnimateBool = null;
     [SerializeField] private EmpowermentPoint empower = null;
     
     
     public Vector2[] lightDirection = {Vector2.zero, Vector2.left, Vector2.up, Vector2.right};
+  
     public int index;
 
     private void Start()
@@ -41,6 +42,8 @@ public class LightPowerSpot : MonoBehaviour
 
     private void Update()
     {
+        print("trans up  " + lightPoint.up);
+        
         if (!atLightPoint) return;
         
         LightController();
@@ -112,9 +115,6 @@ public class LightPowerSpot : MonoBehaviour
         Points.Clear();
         Points.Add(startPoint);
         
-        print(hitData.transform.name);
-
-        
         IsTagTrue(hitData);
         
         /*
@@ -127,10 +127,6 @@ public class LightPowerSpot : MonoBehaviour
         {
             print("Running");
             ReflectFurther(startPoint, hitData);
-        }
-        else if (hitData.transform.CompareTag("LightTrigger"))
-        {
-            return;
         }
         else
         {
@@ -175,7 +171,7 @@ public class LightPowerSpot : MonoBehaviour
 
             if (newHitData.transform.CompareTag("LightTrigger") && canAnimateBool.canAnimate)
             {
-                _animator.Play("OpenDoor");
+                _animator.Play(animation.ToString());
                 canAnimateBool.canAnimate = false;
             }
             else

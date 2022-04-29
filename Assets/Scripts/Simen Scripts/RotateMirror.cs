@@ -6,7 +6,13 @@ public class RotateMirror : MonoBehaviour
     [SerializeField] private Input _input;
     [SerializeField] private GameObject[] mirror;
     [SerializeField] private bool canFlip;
-    
+    private Animator _animator;
+
+    private void Start()
+    {
+        _animator = GetComponent<Animator>();
+    }
+
     private void Update()
     {
         Rotate();
@@ -26,6 +32,7 @@ public class RotateMirror : MonoBehaviour
         foreach (var mirror in mirrors)
         {
             mirror.transform.Rotate(new Vector3(0, 0, -90));
+            _animator.Play("LightLever");
         }
     }
 

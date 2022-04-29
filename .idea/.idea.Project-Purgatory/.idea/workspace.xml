@@ -2,9 +2,49 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bdb2823b-e0aa-4030-8bbf-2f4ce0a66323" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Character/Charecther_sprite.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Character/Charecther_sprite.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Objects/Zone A Objects/Empower point.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Objects/Zone A Objects/Empower point.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Art/Objects/Zone B Objects/Water_pipe1.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Art/Objects/Zone B Objects/Water_pipe2.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Art/Objects/Zone B Objects/Water_pipe_anima1.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Art/Objects/Zone B Objects/Water_pipe_anima2.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Art/Objects/Zone B Objects/Water_pipe_anima3.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Art/Objects/Zone B Objects/Water_pipe_anima4.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Art/Objects/Zone B Objects/Water_pipe_anima5.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Art/Objects/Zone B Objects/Water_pipe_anima6.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Art/Objects/Zone B Objects/Water_pipe_anima7.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Art/Objects/Zone B Objects/Water_pipe_anima8.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Art/Objects/Zone B Objects/Water_pipe_frez1.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Art/Objects/Zone B Objects/Water_pipe_frez2.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Art/Objects/power up.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Art/Objects/puzzle door closed left.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Art/Objects/puzzle door closed right.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Art/Objects/puzzle door open left.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Art/Objects/puzzle door open right.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Art/Ui title screen stuff.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Art/Ui title screen stuff/Placeholder.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/animations/Door.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/animations/Door.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/animations/puzzle door closed left.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/animations/puzzle door closed left.controller.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Project-Purgatory/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project-Purgatory/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Shaders/Sprites/Slope_mirror_corner.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Shaders/Sprites/Slope_mirror_corner.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Shaders/Sprites/rotating_mirror.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Shaders/Sprites/rotating_mirror.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Shaders/Sprites/slope_mirror (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Shaders/Sprites/slope_mirror (2).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Shaders/Sprites/slope_mirror_sprite.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Shaders/Sprites/slope_mirror_sprite.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/animations/LightLever.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/animations/LightLever.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/animations/lever light 1.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/animations/lever light 1.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/S-Stuff/DoorOpenController.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/S-Stuff/DoorOpenController.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/S-Stuff/OpenDoor.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/S-Stuff/OpenDoor.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/S-Stuff/Scens/ManyMirrorAndSwitchesTestingAreaFuck.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/S-Stuff/Scens/ManyMirrorAndSwitchesTestingAreaFuck.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/S-Stuff/Scens/UI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/S-Stuff/Scens/UI.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Zone A.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Zone A.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Simen Scripts/LightPowerSpot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Simen Scripts/LightPowerSpot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Simen Scripts/RotateMirror.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Simen Scripts/RotateMirror.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,6 +88,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "nodejs_package_manager_path": "npm",
     "rider.run.widget.enabled.cache": "false",
     "vue.rearranger.settings.migration": "true"
   }
@@ -92,7 +133,7 @@
       <updated>1650888043315</updated>
       <workItem from="1650888049227" duration="3686000" />
       <workItem from="1650909623823" duration="29300000" />
-      <workItem from="1651137905688" duration="19241000" />
+      <workItem from="1651137905688" duration="30653000" />
     </task>
     <servers />
   </component>
