@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
         
         if (isSliding)
         {
-           Decelerate(); 
+           //Decelerate(); 
         }
         
     }

@@ -7,34 +7,33 @@ public class PressurePlate : MonoBehaviour
 {
     private bool canPressdown;
 
-    [HideInInspector] public bool pressureplateActivated;
+    [HideInInspector] public bool pressureplateActivatedHold;
 
 
     private void Update()
     {
         if (canPressdown)
         {
-            pressureplateActivated = true;
+            pressureplateActivatedHold = true;
         }
         else
         {
-            pressureplateActivated = false;
+            pressureplateActivatedHold = false;
         }
     }
 
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Box")
+        if (other.gameObject.tag == "Box" || other.gameObject.tag == "Player")
         {
             canPressdown = true;
-            print("sadasndk");
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Box")
+        if (other.gameObject.tag == "Box" || other.gameObject.tag == "Player")
         {
             canPressdown = false;
         }

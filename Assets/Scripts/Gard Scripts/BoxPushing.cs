@@ -27,9 +27,9 @@ public class BoxPushing : MonoBehaviour
     {
         LockMovement();
 
-        if (_WaterStreamPushing.pushingBox)
+        if (isOnIce)
         {
-            print("jbikidbfkasd");
+            
         }
     }
 
@@ -65,6 +65,7 @@ public class BoxPushing : MonoBehaviour
         if (other.gameObject.tag == "ResetZone")
         {
             gameObject.transform.position = startPosition;
+            _Rigidbody2D.velocity = Vector2.zero;
         }
     }
 }
