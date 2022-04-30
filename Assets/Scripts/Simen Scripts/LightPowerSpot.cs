@@ -27,7 +27,7 @@ public class LightPowerSpot : MonoBehaviour
     [SerializeField] private EmpowermentPoint empower = null;
     
     
-    public Vector2[] lightDirection = {Vector2.zero, Vector2.left, Vector2.up, Vector2.right};
+    [SerializeField] private Vector2[] lightDirection = {Vector2.zero, Vector2.left, Vector2.up, Vector2.right};
     public int index;
 
     private void Start()
@@ -161,8 +161,6 @@ public class LightPowerSpot : MonoBehaviour
         Vector2 inDirection = (hitData.point - origin).normalized;
         Vector2 newDirection = Vector2.Reflect(inDirection, hitData.normal);
         
-        if (hitData.transform.CompareTag("LightTrigger") || hitData.transform.CompareTag("LightPowerUp") || hitData.transform.CompareTag("Ground")) return;
-
         var newHitData = Physics2D.Raycast(hitData.point + (newDirection * 0.0001f), newDirection * 100, LightRange);
         if (newHitData)
         {
