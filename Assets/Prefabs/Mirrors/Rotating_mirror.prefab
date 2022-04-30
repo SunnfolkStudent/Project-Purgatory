@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1253317290862954737}
   - component: {fileID: 1253317290862954738}
   - component: {fileID: 1253317290862954739}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Rotating_mirror
   m_TagString: Mirror
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1253317290862954736}
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071058, w: 0.70710784}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 6.0200043, y: 3.25, z: -1.6194662}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -118,7 +118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1253317292689083611}
   - component: {fileID: 1253317292689083612}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Backside
   m_TagString: Ground
   m_Icon: {fileID: 0}
