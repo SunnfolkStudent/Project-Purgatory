@@ -19,6 +19,7 @@ public class EmpowermentPoint : MonoBehaviour
     public int lightRange;
     
     [SerializeField] private Animator animator;
+    [SerializeField] private string animation;
     [SerializeField] private SCRUB canAnimateBool;
 
     public bool CanEmpowerLight;
@@ -108,7 +109,7 @@ public class EmpowermentPoint : MonoBehaviour
         {
             if (newHitData.transform.CompareTag("LightTrigger") && canAnimateBool.canAnimate)
             {
-                animator.Play("OpenDoor");
+                animator.Play(animation);
                 canAnimateBool.canAnimate = false;
             }
             else if (newHitData.transform.CompareTag("Ice"))
