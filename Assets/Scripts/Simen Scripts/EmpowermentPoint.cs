@@ -21,6 +21,7 @@ public class EmpowermentPoint : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private string animation;
     [SerializeField] private SCRUB canAnimateBool;
+    private bool firstBounce = true;
 
     public bool CanEmpowerLight;
     
@@ -41,6 +42,7 @@ public class EmpowermentPoint : MonoBehaviour
         }
         else
         {
+            print("sakjhdksajd");
             DisableLight();
         }
     }
@@ -107,6 +109,8 @@ public class EmpowermentPoint : MonoBehaviour
         var newHitData = Physics2D.Raycast(hitData.point + (newDirection * 0.0001f), newDirection * 100, lightRange);
         if (newHitData)
         {
+            if ((hitData.transform.CompareTag("LightTrigger") || hitData.transform.CompareTag("Ground")) && !firstBounce) return;
+
             if (newHitData.transform.CompareTag("LightTrigger") && canAnimateBool.canAnimate)
             {
                 animator.Play(animation);
@@ -122,6 +126,7 @@ public class EmpowermentPoint : MonoBehaviour
                 ReflectFurther(hitData.point, newHitData);
                 
                 ray = new Ray2D(newHitData.point, Vector2.Reflect(newDirection, newHitData.normal));
+                firstBounce = false;
             }
         }
         else
