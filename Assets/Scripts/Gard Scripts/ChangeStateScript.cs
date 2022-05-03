@@ -13,11 +13,11 @@ public class ChangeStateScript : MonoBehaviour
     private bool isWaterStream;
 
     public GameObject IceVisualTile;
-    public WaterStreamPushing _WaterStreamPushing;
+    public WaterStreamPushing _WaterStreamPushing = null;
 
     [SerializeField] private PhysicsMaterial2D iceMaterial;
     [SerializeField] private PhysicsMaterial2D defultMaterial;
-    [SerializeField] private CompositeCollider2D WaterCompositeCollider2D;
+    [SerializeField] private CompositeCollider2D WaterCompositeCollider2D = null;
 
     public bool canFreezeObject; 
 

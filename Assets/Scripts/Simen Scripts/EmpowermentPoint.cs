@@ -24,6 +24,10 @@ public class EmpowermentPoint : MonoBehaviour
     private bool firstBounce = true;
 
     public bool CanEmpowerLight;
+
+    public ChangeStateScript FreezeableObjectEmp;
+    
+    public string[] tags;
     
     private void Start()
     {
@@ -42,7 +46,6 @@ public class EmpowermentPoint : MonoBehaviour
         }
         else
         {
-            print("sakjhdksajd");
             DisableLight();
         }
     }
@@ -71,13 +74,18 @@ public class EmpowermentPoint : MonoBehaviour
     private void RayCast()
     {
         var hitData = Physics2D.Raycast(spawnPointForLight.position, vector, lightRange, interactLayer);
+        Debug.DrawRay(spawnPointForLight.position, vector * lightRange, Color.magenta);
         currentReflections = 0;
         Points.Clear();
         Points.Add(startPoint);
+        
+        IsTagTrue(hitData);
+        
 
-        if (hitData.transform.CompareTag("Mirror") || hitData.transform.CompareTag("Ice") || hitData.transform.CompareTag("LightPowerUp"))
+        if (IsTagTrue(hitData))
         {
             ReflectFurther(startPoint, hitData);
+            print(hitData.transform.tag);
         }
         else if (hitData.transform == null)
         {
@@ -90,6 +98,18 @@ public class EmpowermentPoint : MonoBehaviour
         
         LightBeam.positionCount = Points.Count;
         LightBeam.SetPositions(Points.ToArray());
+    }
+    
+    private bool IsTagTrue(RaycastHit2D hitData)
+    {
+        for (int i = 0; i < tags.Length; i++)
+        {
+            if (hitData.transform.CompareTag(tags[i]))
+            {
+                return true;
+            }
+        }
+        return false;
     }
     
     private void ReflectFurther(Vector2 origin, RaycastHit2D hitData)
@@ -116,9 +136,12 @@ public class EmpowermentPoint : MonoBehaviour
                 animator.Play(animation);
                 canAnimateBool.canAnimate = false;
             }
-            else if (newHitData.transform.CompareTag("Ice"))
+            else if (newHitData.transform.CompareTag("Ice") || newHitData.transform.CompareTag("WaterStreamIce"))
             {
                 // Do what is should when it hits ice here.
+                print(newHitData.transform.name);
+                FreezeableObjectEmp = newHitData.transform.gameObject.GetComponent<ChangeStateScript>();
+                FreezeableObjectEmp.ChangeState(); 
             }
             else
             {
