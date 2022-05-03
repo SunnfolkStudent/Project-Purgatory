@@ -23,6 +23,14 @@ TagManager:
   - TPtoZoneB
   - TPtoZoneHUB
   - LightPowerUp
+  - Camera1
+  - Camera2
+  - Camera3
+  - Camera4
+  - Camera1Exit
+  - Camera2Exit
+  - Camera3Exit
+  - Camera4Exit
   layers:
   - Default
   - TransparentFX
