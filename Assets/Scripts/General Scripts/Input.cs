@@ -22,17 +22,12 @@ namespace Assets.Scripts.General_Scripts
     
         [HideInInspector] public Vector2 MoveVector;
         [HideInInspector] public bool Jump;
-        [HideInInspector] public bool Magic;
-        [HideInInspector] public bool Light;
-        [HideInInspector] public bool Flip;
+        [HideInInspector] public bool Interact;
 
         void Update()
         {
             MoveVector = _Input.Player.Move.ReadValue<Vector2>();
-            Jump = _Input.Player.Jump.triggered;
-            Magic = _Input.Player.Magic.triggered;
-            Light = _Input.Player.Light.triggered;
-            Flip = _Input.Player.Interact.triggered;
+            Interact = _Input.Player.Interact.triggered;
         }
     }
 }

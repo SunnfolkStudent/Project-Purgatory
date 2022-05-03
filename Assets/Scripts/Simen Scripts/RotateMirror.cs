@@ -20,7 +20,7 @@ public class RotateMirror : MonoBehaviour
 
     private void Rotate()
     {
-        if (_input.Flip && canFlip)
+        if (_input.Interact && canFlip)
         {
             RotateArrayObject(mirror);
         }

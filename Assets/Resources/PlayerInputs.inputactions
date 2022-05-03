@@ -24,36 +24,9 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Magic",
-                    "type": "Button",
-                    "id": "2286cf0a-aac3-4d99-8c02-a06491cb53e6",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "FlipMirror",
-                    "type": "Button",
-                    "id": "475fdd69-9f18-4fb5-8713-747ed2ecc3ae",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Light",
-                    "type": "Button",
-                    "id": "64aadca4-17d7-4dca-a30f-c285adf12955",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Interact",
                     "type": "Button",
-                    "id": "63bf205d-8ae5-4823-9067-d67f610015c3",
+                    "id": "2286cf0a-aac3-4d99-8c02-a06491cb53e6",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -156,7 +129,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Magic",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -164,72 +137,6 @@
                     "name": "",
                     "id": "735950a3-6c21-4784-b646-2fbaa31f9721",
                     "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Magic",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "84716a73-97f1-45b0-b623-8413f894f64f",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Light",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "afdb6626-dc1c-48fc-8990-3f4985bbcf69",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Light",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "cb1f9584-61ac-4172-93e3-0aa991b31d4d",
-                    "path": "<Keyboard>/f",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "FlipMirror",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "1badd3e6-c6a6-415f-8c2e-734e3edfca8b",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "FlipMirror",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9cfab56c-5fc3-4b59-b828-a92fcb699829",
-                    "path": "<Keyboard>/f",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Interact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "25e347cc-850f-425d-ba1d-5f46e45771ed",
-                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

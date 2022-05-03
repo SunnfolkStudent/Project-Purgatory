@@ -99,7 +99,7 @@ public class LightPowerSpot : MonoBehaviour
     
         private void LightController()
         {
-            if (_input.Light)
+            if (_input.Interact)
             {
                 index = (index + 1) % lightDirection.Length;
                 DisableLight();

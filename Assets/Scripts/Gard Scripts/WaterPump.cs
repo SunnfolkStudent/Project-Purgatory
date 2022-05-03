@@ -40,7 +40,7 @@ public class WaterPump : MonoBehaviour
     
     private void SwitchPumpStreams()
     {
-        if (canTurnOnNr1 && !canTurnOnNr2 && !canTurnOffNr1 && !canTurnOffNr2 && _Input.Flip) // 1stage
+        if (canTurnOnNr1 && !canTurnOnNr2 && !canTurnOffNr1 && !canTurnOffNr2 && _Input.Interact) // 1stage
         {
             WaterStream1.gameObject.SetActive(true);
             WaterStream1.gameObject.tag = "WaterStream";
@@ -50,7 +50,7 @@ public class WaterPump : MonoBehaviour
             canTurnOffNr1 = true;
             canTurnOffNr2 = false;
         }
-        else if (!canTurnOnNr1 && canTurnOnNr2 && canTurnOffNr1 && !canTurnOffNr2 && _Input.Flip) //2stage
+        else if (!canTurnOnNr1 && canTurnOnNr2 && canTurnOffNr1 && !canTurnOffNr2 && _Input.Interact) //2stage
         {
             WaterStream1.gameObject.SetActive(false);
             WaterStream2.gameObject.SetActive(true);
@@ -61,7 +61,7 @@ public class WaterPump : MonoBehaviour
             canTurnOffNr1 = false;
             canTurnOffNr2 = true;
         }
-        else if (!canTurnOnNr1 && !canTurnOnNr2 && !canTurnOffNr1 && canTurnOffNr2 && _Input.Flip) //3stage
+        else if (!canTurnOnNr1 && !canTurnOnNr2 && !canTurnOffNr1 && canTurnOffNr2 && _Input.Interact) //3stage
         {
             WaterStream2.gameObject.SetActive(false);
             
