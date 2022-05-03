@@ -41,8 +41,6 @@ public class LightPowerSpot : MonoBehaviour
 
     private void Update()
     {
-        print("trans up  " + lightPoint.up);
-        
         if (!atLightPoint) return;
         
         LightController();

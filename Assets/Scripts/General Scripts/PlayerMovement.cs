@@ -1,13 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using Input = Assets.Scripts.General_Scripts.Input;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Assets.Scripts.General_Scripts.Input _Input;
+    public Input _Input;
     public Rigidbody2D _Rigidbody2D;
 
     [SerializeField] private float moveSpeed = 10f;
@@ -31,9 +27,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float decelerationForce = 200f;
     [SerializeField] private float decelerationAmount = 10f;
 
+    #region Animation
+    
+    private Animator anim;
+    public bool isJumping;
+
+    #endregion
+
    
     private void Start()
     {
+        anim = GetComponent<Animator>();
         _Input = GetComponent<Input>();
         _Rigidbody2D = GetComponent<Rigidbody2D>();
         isFacingLeft = false;
@@ -44,11 +48,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_Input.Jump && IsGrounded()/*grounded*/)
         {
-            print("Is rjumping");
             _Rigidbody2D.velocity = new Vector2(_Rigidbody2D.velocity.x, jumpSpeed);
+            isJumping = true;
         }
         
-        print(IsGrounded());
         FlipPlayer();
     }
 
@@ -69,29 +72,41 @@ public class PlayerMovement : MonoBehaviour
             var scale = transform.localScale;
             transform.localScale = new Vector3(_Input.MoveVector.x, scale.y, scale.z);
         }
+        animations();
     }
 
-    private void GroundCheck()
+    private void animations()
     {
-        print(grounded);
-
-        var hit = Physics2D.Raycast(transform.position, Vector2.down, raycastRange, GroundLayer);
-        
-        if (hit.transform.CompareTag("Ground"))
+        if (IsGrounded())
         {
-            grounded = true;
-            isSliding = false;
+            //          if this       is not 0  True     false
+            anim.Play(_Input.MoveVector.x != 0 ? "Walk" : "Idle");
+            /*if (_Input.MoveVector.x != 0)
+            {
+                anim.Play("Walk");
+            }
+            else 
+            {
+                anim.Play("Idle");
+            }*/
+        }
+        else
+        {
+            anim.Play(_Rigidbody2D.velocity.y > 0 ? "Jump" : "Falling");
+            
+           /* if (_Rigidbody2D.velocity.y >= 0.1)
+            {
+                anim.Play("Jump");
+            }
+            else if (_Rigidbody2D.velocity.y <= -0.1)
+            {
+                anim.Play("Falling");
+            }*/
         }
 
-        var hitice = Physics2D.Raycast(transform.position, Vector2.down, raycastRange, Icelayer);
-
-        if (hitice.collider != null)
-        {
-            grounded = true;
-            isSliding = true;
-        }
+       
     }
-
+    
     private bool IsGrounded()
     {
         var hit = Physics2D.Raycast(transform.position, Vector2.down, raycastRange, GroundLayer);
