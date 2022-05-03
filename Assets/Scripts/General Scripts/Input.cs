@@ -28,6 +28,7 @@ namespace Assets.Scripts.General_Scripts
         {
             MoveVector = _Input.Player.Move.ReadValue<Vector2>();
             Interact = _Input.Player.Interact.triggered;
+            Jump = _Input.Player.Jump.triggered;
         }
     }
 }
