@@ -10,7 +10,9 @@ public class BoxPushing : MonoBehaviour
     private bool isOnIce;
     [SerializeField] private float raycastRange = 2f;
     [SerializeField] private LayerMask Icelayer;
+    [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Rigidbody2D _Rigidbody2D;
+    private bool isgrounded;
 
     private Vector2 startPosition;
 
@@ -27,14 +29,27 @@ public class BoxPushing : MonoBehaviour
     {
         LockMovement();
 
-        if (isOnIce)
+        if (isgrounded)
         {
-            
+            print("asihdlanld");
         }
     }
 
     private void LockMovement()
     {
+
+        var hitground = Physics2D.Raycast(transform.position, Vector2.down, raycastRange, groundLayer);
+        print(hitground.transform.name);
+        if (hitground.collider != null)
+        {
+            isgrounded = true;
+        }
+        else
+        {
+            isgrounded = false;
+        }
+        
+        
         var hitice = Physics2D.Raycast(transform.position, Vector2.down, raycastRange, Icelayer);
 
         if (hitice.collider != null)

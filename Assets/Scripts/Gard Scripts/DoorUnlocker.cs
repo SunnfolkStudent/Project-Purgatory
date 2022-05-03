@@ -18,11 +18,13 @@ public class DoorUnlocker : MonoBehaviour
         if (_PressurePlateBox.pressureplateActivatedHold)
         {
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
             //This can be changed to play animation
         }
         else
         {
             gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            gameObject.GetComponent<BoxCollider2D>().enabled = true;
         }
     }
 }

@@ -8,7 +8,7 @@ public class WaterStreamPushing : MonoBehaviour
 
     public Rigidbody2D box_RigidBody2D;
 
-    private bool canPush;
+    [HideInInspector] public bool canPush;
 
     [SerializeField] private float pushForce = 1f;
 

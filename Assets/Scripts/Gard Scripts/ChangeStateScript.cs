@@ -13,6 +13,7 @@ public class ChangeStateScript : MonoBehaviour
     private bool isWaterStream;
 
     public GameObject IceVisualTile;
+    public WaterStreamPushing _WaterStreamPushing;
 
     [SerializeField] private PhysicsMaterial2D iceMaterial;
     [SerializeField] private PhysicsMaterial2D defultMaterial;
@@ -46,7 +47,7 @@ public class ChangeStateScript : MonoBehaviour
             gameObject.tag = "Water";
         }
 
-        if (isWaterStream)
+        if (isWaterStream && !_WaterStreamPushing.canPush)
         {
             gameObject.tag = "WaterStreamIce";
         }
