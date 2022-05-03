@@ -42,52 +42,42 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (_Input.Jump && grounded)
+        if (_Input.Jump && IsGrounded()/*grounded*/)
         {
+            print("Is rjumping");
             _Rigidbody2D.velocity = new Vector2(_Rigidbody2D.velocity.x, jumpSpeed);
         }
-
+        
+        print(IsGrounded());
         FlipPlayer();
     }
 
     private void FixedUpdate()
     {
-        
         _Rigidbody2D.velocity = new Vector2(_Input.MoveVector.x * moveSpeed, _Rigidbody2D.velocity.y);
-        
-        GroundCheck();
-        
+
         if (isSliding)
         {
            //Decelerate(); 
         }
-        
     }
 
     private void FlipPlayer()
     {
-        if (Keyboard.current.dKey.wasPressedThisFrame && isFacingLeft)
+        if (_Input.MoveVector.x != 0)
         {
-            transform.Rotate(new Vector3(0, 180));
-            isFacingRight = true;
-            isFacingLeft = false;
-        }
-
-        if (Keyboard.current.aKey.wasPressedThisFrame && isFacingRight)
-        {
-            transform.Rotate(new Vector3(0, 180));
-            isFacingLeft = true;
-            isFacingRight = false;
+            var scale = transform.localScale;
+            transform.localScale = new Vector3(_Input.MoveVector.x, scale.y, scale.z);
         }
     }
 
     private void GroundCheck()
     {
-        grounded = false;
+        print(grounded);
 
         var hit = Physics2D.Raycast(transform.position, Vector2.down, raycastRange, GroundLayer);
-
-        if (hit.collider != null)
+        
+        if (hit.transform.CompareTag("Ground"))
         {
             grounded = true;
             isSliding = false;
@@ -99,6 +89,28 @@ public class PlayerMovement : MonoBehaviour
         {
             grounded = true;
             isSliding = true;
+        }
+    }
+
+    private bool IsGrounded()
+    {
+        var hit = Physics2D.Raycast(transform.position, Vector2.down, raycastRange, GroundLayer);
+
+        if (hit.transform == null) return false;
+        
+        if (hit.transform.CompareTag("Ground"))
+        {
+            isSliding = false;
+            return true;
+        }
+        else if (hit.transform.CompareTag("Ice"))
+        {
+            isSliding = true;
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
     

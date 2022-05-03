@@ -46,36 +46,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Magic"",
-                    ""type"": ""Button"",
-                    ""id"": ""2286cf0a-aac3-4d99-8c02-a06491cb53e6"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""FlipMirror"",
-                    ""type"": ""Button"",
-                    ""id"": ""475fdd69-9f18-4fb5-8713-747ed2ecc3ae"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Light"",
-                    ""type"": ""Button"",
-                    ""id"": ""64aadca4-17d7-4dca-a30f-c285adf12955"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Interact"",
                     ""type"": ""Button"",
-                    ""id"": ""63bf205d-8ae5-4823-9067-d67f610015c3"",
+                    ""id"": ""2286cf0a-aac3-4d99-8c02-a06491cb53e6"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -178,7 +151,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Magic"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -186,72 +159,6 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""735950a3-6c21-4784-b646-2fbaa31f9721"",
                     ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Magic"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""84716a73-97f1-45b0-b623-8413f894f64f"",
-                    ""path"": ""<Keyboard>/q"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Light"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""afdb6626-dc1c-48fc-8990-3f4985bbcf69"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Light"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""cb1f9584-61ac-4172-93e3-0aa991b31d4d"",
-                    ""path"": ""<Keyboard>/f"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""FlipMirror"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1badd3e6-c6a6-415f-8c2e-734e3edfca8b"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""FlipMirror"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9cfab56c-5fc3-4b59-b828-a92fcb699829"",
-                    ""path"": ""<Keyboard>/f"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""25e347cc-850f-425d-ba1d-5f46e45771ed"",
-                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -268,9 +175,6 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        m_Player_Magic = m_Player.FindAction("Magic", throwIfNotFound: true);
-        m_Player_FlipMirror = m_Player.FindAction("FlipMirror", throwIfNotFound: true);
-        m_Player_Light = m_Player.FindAction("Light", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
     }
 
@@ -333,9 +237,6 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Jump;
-    private readonly InputAction m_Player_Magic;
-    private readonly InputAction m_Player_FlipMirror;
-    private readonly InputAction m_Player_Light;
     private readonly InputAction m_Player_Interact;
     public struct PlayerActions
     {
@@ -343,9 +244,6 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         public PlayerActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
-        public InputAction @Magic => m_Wrapper.m_Player_Magic;
-        public InputAction @FlipMirror => m_Wrapper.m_Player_FlipMirror;
-        public InputAction @Light => m_Wrapper.m_Player_Light;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -362,15 +260,6 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @Magic.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMagic;
-                @Magic.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMagic;
-                @Magic.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMagic;
-                @FlipMirror.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFlipMirror;
-                @FlipMirror.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFlipMirror;
-                @FlipMirror.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFlipMirror;
-                @Light.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLight;
-                @Light.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLight;
-                @Light.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLight;
                 @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
@@ -384,15 +273,6 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
-                @Magic.started += instance.OnMagic;
-                @Magic.performed += instance.OnMagic;
-                @Magic.canceled += instance.OnMagic;
-                @FlipMirror.started += instance.OnFlipMirror;
-                @FlipMirror.performed += instance.OnFlipMirror;
-                @FlipMirror.canceled += instance.OnFlipMirror;
-                @Light.started += instance.OnLight;
-                @Light.performed += instance.OnLight;
-                @Light.canceled += instance.OnLight;
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
@@ -404,9 +284,6 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnMagic(InputAction.CallbackContext context);
-        void OnFlipMirror(InputAction.CallbackContext context);
-        void OnLight(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
     }
 }

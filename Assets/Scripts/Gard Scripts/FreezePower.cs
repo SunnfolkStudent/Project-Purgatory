@@ -14,7 +14,7 @@ public class FreezePower : MonoBehaviour
    
     void Update()
     {
-        if (FreezableObject.canFreezeObject && _Input.Magic)
+        if (FreezableObject.canFreezeObject && _Input.Interact)
         {
             FreezableObject.ChangeState();
         }
