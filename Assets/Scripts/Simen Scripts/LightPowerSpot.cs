@@ -108,23 +108,14 @@ public class LightPowerSpot : MonoBehaviour
     private void RayCast()
     {
         var hitData = Physics2D.Raycast(lightPoint.position, lightDirection[index], LightRange, interactLayer);
-        Debug.DrawRay(lightPoint.position, lightDirection[index] * LightRange, Color.blue);
         currentReflections = 0;
         Points.Clear();
         Points.Add(startPoint);
         
         IsTagTrue(hitData);
-        
-        /*
-        if (hitData.transform.CompareTag("Mirror") || hitData.transform.CompareTag("Ice") || hitData.transform.CompareTag("LightPowerUp") || hitData.transform.CompareTag("Ground") || hitData.transform.CompareTag("LightTrigger"))
-        {
-            print("Running");
-            ReflectFurther(startPoint, hitData);
-        }*/
-        
+
         if (IsTagTrue(hitData))
         {
-            print("Running");
             ReflectFurther(startPoint, hitData);
         }
         else
