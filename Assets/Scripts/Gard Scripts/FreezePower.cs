@@ -9,15 +9,21 @@ public class FreezePower : MonoBehaviour
 
     public Input _Input;
 
-    [HideInInspector] public ChangeStateScript FreezableObject;
+    [HideInInspector] public ChangeStateScript FreezableObject = null;
     
    
     void Update()
     {
         if (FreezableObject.canFreezeObject && _Input.Interact)
         {
+            print("skjadbajksbjkdbaskjbdkas");
             FreezableObject.ChangeState();
         }
+        else if (!FreezableObject.canFreezeObject)
+        {
+            return;
+        }
+        
     }
     
 
