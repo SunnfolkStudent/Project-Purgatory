@@ -171,6 +171,7 @@ GameObject:
   - component: {fileID: 7426118431012980337}
   - component: {fileID: 7426118431012980339}
   - component: {fileID: 1291345957}
+  - component: {fileID: 1528095640818955598}
   m_Layer: 0
   m_Name: InteractRange
   m_TagString: InteractRange
@@ -300,6 +301,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _SceneController: {fileID: 1055479385803922780}
+--- !u!114 &1528095640818955598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7426118431012980351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a9d803c833142548af4cbcb22cd4081, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Camera1: {fileID: 0}
+  Camera2: {fileID: 0}
+  Camera3: {fileID: 0}
+  Camera4: {fileID: 0}
+  FollowCamera: {fileID: 0}
 --- !u!1 &7426118431276045049
 GameObject:
   m_ObjectHideFlags: 0
