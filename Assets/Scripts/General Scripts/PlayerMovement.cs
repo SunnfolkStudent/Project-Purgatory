@@ -10,10 +10,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float jumpSpeed = 10f;
 
-    [HideInInspector] public bool grounded;
-    [SerializeField] private LayerMask GroundLayer;
-    [SerializeField] private LayerMask Icelayer;
     [SerializeField] private float raycastRange;
+    public LayerMask interActLayer; // You set these in the inspector. Multiply can be used at once.
 
     private bool isFacingLeft;
     private bool isFacingRight;
@@ -39,8 +37,9 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     [SerializeField] private GameObject spawnPointLeft;
-    [SerializeField] private GameObject spawnPointRight;
-   
+    [SerializeField] private GameObject RaycastTargetCenter = null; 
+    [SerializeField] private GameObject RaycastTargetBehind = null; 
+    
     private void Start()
     {
         source = GetComponent<AudioSource>();
@@ -120,36 +119,38 @@ public class PlayerMovement : MonoBehaviour
     
     private bool IsGrounded()
     {
-        var hit = Physics2D.Raycast(transform.position, Vector2.down, raycastRange, GroundLayer);
-        //var hitleft = Physics2D.Raycast(spawnPointLeft.transform.position, Vector2.down, raycastRange, GroundLayer);
-        var hitright = Physics2D.Raycast(spawnPointRight.transform.position, Vector2.down, raycastRange, GroundLayer);
+        var position = spawnPointLeft.transform.position;
 
-        Debug.DrawRay(transform.position, Vector2.down * raycastRange, Color.red);
-        //Debug.DrawRay(spawnPointLeft.transform.position, Vector2.down * raycastRange, Color.blue);
-        Debug.DrawRay(spawnPointRight.transform.position, Vector2.down * raycastRange, Color.magenta);
+        var hit = Physics2D.Raycast(transform.position, Vector2.down, raycastRange, interActLayer);
+        var hitLeft = Physics2D.Raycast(position, Vector2.down, raycastRange, interActLayer);
+
+        if (hit) {RaycastTargetCenter = hit.transform.gameObject;}
+        if (hitLeft) {RaycastTargetBehind = hitLeft.transform.gameObject;}
+
+        if (!hit) {RaycastTargetCenter = null;}
+        if (!hitLeft) {RaycastTargetBehind = null;}
         
-        //print("hit left " + hitleft.transform.name);
-        print("hit right " + hitright.transform.CompareTag(""));
-        
-        
-        if (hit.transform == null && hitright.transform == null) return false;
-        
-        if (hit.transform.CompareTag("Ground") || hitright.transform.CompareTag("Ground"))
+        if (RaycastTargetCenter != null && RaycastTargetCenter.CompareTag("Ground"))
         {
             isSliding = false;
             return true;
         }
-        else if (hit.transform.CompareTag("Box") || hitright.transform.CompareTag("Box"))
+        else if (RaycastTargetBehind != null && RaycastTargetBehind.CompareTag("Ground"))
         {
             isSliding = false;
             return true;
         }
-        else if (hit.transform.CompareTag("Ice") || hitright.transform.CompareTag("Ice"))
+        else if (RaycastTargetCenter != null && (RaycastTargetCenter.transform.CompareTag("Box") || RaycastTargetBehind.transform.CompareTag("Box")))
+        {
+            isSliding = false;
+            return true;
+        }
+        else if (RaycastTargetBehind != null && RaycastTargetCenter != null && (RaycastTargetCenter.transform.CompareTag("Ice") || RaycastTargetBehind.transform.CompareTag("Ice")))
         {
             isSliding = true;
             return true;
         }
-        else
+        else if (RaycastTargetBehind != null && RaycastTargetCenter != null && RaycastTargetCenter.transform == null && RaycastTargetBehind.transform == null) return false;
         {
             return false;
         }
