@@ -47,6 +47,7 @@ public class ChangeStateScript : MonoBehaviour
             gameObject.tag = "Water";
         }
 
+        
         if (isWaterStream && !_WaterStreamPushing.canPush)
         {
             gameObject.tag = "WaterStreamIce";
