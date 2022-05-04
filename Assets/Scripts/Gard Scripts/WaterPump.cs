@@ -44,6 +44,27 @@ public class WaterPump : MonoBehaviour
         {
             _Animator.Play("LightLever");
         }
+
+
+        if (canTurnOnNr1)
+        {
+            print("can turn on nr1");
+        }
+
+        if (canTurnOnNr2)
+        {
+            print("can turn on nr2");
+        }
+        
+        //if (canTurnOffNr1)
+        {
+            print("can turn off nr1");
+        }
+        
+        //if (canTurnOffNr2)
+        {
+            print("can turn off nr2");
+        }
     }
     
     
@@ -87,7 +108,7 @@ public class WaterPump : MonoBehaviour
     {
         if (other.gameObject.tag == "InteractRange")
         {
-            canflip = false;
+            canflip = true;
 
             if (!WaterStream1.gameObject.activeInHierarchy && !WaterStream2.gameObject.activeInHierarchy)
             {
@@ -118,6 +139,8 @@ public class WaterPump : MonoBehaviour
         if (other.gameObject.tag == "InteractRange")
         {
             canTurnOnNr1 = false;
+            canTurnOffNr1 = false;
+            canTurnOnNr2 = false;
             canTurnOffNr1 = false;
             canflip = false;
         } 

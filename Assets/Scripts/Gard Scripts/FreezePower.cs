@@ -16,7 +16,6 @@ public class FreezePower : MonoBehaviour
     {
         if (FreezableObject.canFreezeObject && _Input.Interact)
         {
-            print("skjadbajksbjkdbaskjbdkas");
             FreezableObject.ChangeState();
         }
         else if (!FreezableObject.canFreezeObject)
