@@ -87,27 +87,10 @@ public class PlayerMovement : MonoBehaviour
         {
             //          if this       is not 0  True     false
             anim.Play(_Input.MoveVector.x != 0 ? "Walk" : "Idle");
-            /*if (_Input.MoveVector.x != 0)
-            {
-                anim.Play("Walk");
-            }
-            else 
-            {
-                anim.Play("Idle");
-            }*/
         }
         else
         {
             anim.Play(_Rigidbody2D.velocity.y > 0 ? "Jump" : "Falling");
-            
-           /* if (_Rigidbody2D.velocity.y >= 0.1)
-            {
-                anim.Play("Jump");
-            }
-            else if (_Rigidbody2D.velocity.y <= -0.1)
-            {
-                anim.Play("Falling");
-            }*/
         }
     }
 
