@@ -15,8 +15,7 @@ public class BoxPushing : MonoBehaviour
     private bool isgrounded;
 
     private Vector2 startPosition;
-
-    public WaterStreamPushing _WaterStreamPushing;
+    
     
     void Start()
     {
@@ -28,7 +27,6 @@ public class BoxPushing : MonoBehaviour
     void Update()
     {
         LockMovement();
-        
     }
 
     private void LockMovement()
@@ -45,6 +43,7 @@ public class BoxPushing : MonoBehaviour
             isgrounded = false;
         }
         
+        //------------------------------------------------------------------------//
         
         var hitice = Physics2D.Raycast(transform.position, Vector2.down, raycastRange, Icelayer);
 
@@ -57,13 +56,11 @@ public class BoxPushing : MonoBehaviour
             isOnIce = false;
         }
 
-        if (isOnIce && !_WaterStreamPushing.pushingBox)
+        //-----------------------------------------------------------------------//
+        
+        if (isOnIce)
         {
             _Rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
-        }
-        else if (_WaterStreamPushing.pushingBox)
-        { 
-            _Rigidbody2D.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation; 
         }
         else
         {

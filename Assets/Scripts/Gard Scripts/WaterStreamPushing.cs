@@ -11,8 +11,7 @@ public class WaterStreamPushing : MonoBehaviour
     [HideInInspector] public bool canPush;
 
     [SerializeField] private float pushForce = 1f;
-
-    public bool pushingBox;
+    
 
 
     private void Update()
@@ -28,7 +27,6 @@ public class WaterStreamPushing : MonoBehaviour
         if (other.gameObject.tag == "Box")
         {
             canPush = true;
-            pushingBox = false;
         }
     }
 
@@ -37,7 +35,6 @@ public class WaterStreamPushing : MonoBehaviour
         if (other.gameObject.tag == "Box")
         {
             canPush = false;
-            pushingBox = true;
         }
     }
 }

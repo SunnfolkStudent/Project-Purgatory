@@ -17,12 +17,14 @@ public class FreezePower : MonoBehaviour
         if (FreezableObject.canFreezeObject && _Input.Interact)
         {
             FreezableObject.ChangeState();
+            print("freezing");
         }
         else if (!FreezableObject.canFreezeObject)
         {
             return;
         }
         
+        print(FreezableObject.transform.name);
     }
     
 
