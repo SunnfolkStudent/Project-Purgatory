@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isSliding)
         {
-           //Decelerate(); 
+           //Decelerate(); This is disabled as its too buggy in the current implimentation
         }
     }
 
@@ -118,6 +118,11 @@ public class PlayerMovement : MonoBehaviour
         if (hit.transform == null) return false;
         
         if (hit.transform.CompareTag("Ground"))
+        {
+            isSliding = false;
+            return true;
+        }
+        else if (hit.transform.CompareTag("Box"))
         {
             isSliding = false;
             return true;

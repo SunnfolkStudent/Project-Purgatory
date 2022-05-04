@@ -28,18 +28,14 @@ public class BoxPushing : MonoBehaviour
     void Update()
     {
         LockMovement();
-
-        if (isgrounded)
-        {
-            print("asihdlanld");
-        }
+        
     }
 
     private void LockMovement()
     {
 
         var hitground = Physics2D.Raycast(transform.position, Vector2.down, raycastRange, groundLayer);
-        print(hitground.transform.name);
+        
         if (hitground.collider != null)
         {
             isgrounded = true;
