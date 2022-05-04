@@ -38,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
 
     #endregion
 
+    [SerializeField] private GameObject spawnPointLeft;
+    [SerializeField] private GameObject spawnPointRight;
    
     private void Start()
     {
@@ -119,20 +121,30 @@ public class PlayerMovement : MonoBehaviour
     private bool IsGrounded()
     {
         var hit = Physics2D.Raycast(transform.position, Vector2.down, raycastRange, GroundLayer);
+        //var hitleft = Physics2D.Raycast(spawnPointLeft.transform.position, Vector2.down, raycastRange, GroundLayer);
+        var hitright = Physics2D.Raycast(spawnPointRight.transform.position, Vector2.down, raycastRange, GroundLayer);
 
-        if (hit.transform == null) return false;
+        Debug.DrawRay(transform.position, Vector2.down * raycastRange, Color.red);
+        //Debug.DrawRay(spawnPointLeft.transform.position, Vector2.down * raycastRange, Color.blue);
+        Debug.DrawRay(spawnPointRight.transform.position, Vector2.down * raycastRange, Color.magenta);
         
-        if (hit.transform.CompareTag("Ground"))
+        //print("hit left " + hitleft.transform.name);
+        print("hit right " + hitright.transform.CompareTag(""));
+        
+        
+        if (hit.transform == null && hitright.transform == null) return false;
+        
+        if (hit.transform.CompareTag("Ground") || hitright.transform.CompareTag("Ground"))
         {
             isSliding = false;
             return true;
         }
-        else if (hit.transform.CompareTag("Box"))
+        else if (hit.transform.CompareTag("Box") || hitright.transform.CompareTag("Box"))
         {
             isSliding = false;
             return true;
         }
-        else if (hit.transform.CompareTag("Ice"))
+        else if (hit.transform.CompareTag("Ice") || hitright.transform.CompareTag("Ice"))
         {
             isSliding = true;
             return true;
