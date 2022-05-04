@@ -1,6 +1,7 @@
 using UnityEngine;
 using Input = Assets.Scripts.General_Scripts.Input;
 
+[RequireComponent(typeof(AudioSource))]
 public class PlayerMovement : MonoBehaviour
 {
     public Input _Input;
@@ -40,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
    
     private void Start()
     {
+        source = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
         _Input = GetComponent<Input>();
         _Rigidbody2D = GetComponent<Rigidbody2D>();
@@ -92,7 +94,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 anim.Play("Idle");
             }*/
-            if (_Input.MoveVector.x != 0){source.PlayOneShot(walking);}
         }
         else
         {
@@ -107,8 +108,12 @@ public class PlayerMovement : MonoBehaviour
                 anim.Play("Falling");
             }*/
         }
+    }
 
-       
+    public void PlayWalkSound()
+    {
+        source.pitch = Random.Range(0.5f, 1.5f);
+        source.PlayOneShot(walking);
     }
     
     private bool IsGrounded()
@@ -208,7 +213,5 @@ public class PlayerMovement : MonoBehaviour
                 deceleration = decelerationForce;
             }
         }
-        
-        
     }
 }
