@@ -19,6 +19,9 @@ public class WaterPump : MonoBehaviour
 
     public Input _Input;
 
+    [HideInInspector] public bool canflip;
+    [SerializeField] private Animator _Animator;
+
     private void Start()
     {
         WaterStream1.gameObject.SetActive(false);
@@ -35,6 +38,12 @@ public class WaterPump : MonoBehaviour
     private void Update()
     {
         SwitchPumpStreams();
+
+
+        if (canflip && _Input.Interact)
+        {
+            _Animator.Play("LightLever");
+        }
     }
     
     
@@ -78,6 +87,8 @@ public class WaterPump : MonoBehaviour
     {
         if (other.gameObject.tag == "InteractRange")
         {
+            canflip = false;
+
             if (!WaterStream1.gameObject.activeInHierarchy && !WaterStream2.gameObject.activeInHierarchy)
             {
                 canTurnOnNr1 = true;
@@ -108,6 +119,9 @@ public class WaterPump : MonoBehaviour
         {
             canTurnOnNr1 = false;
             canTurnOffNr1 = false;
+            canflip = false;
         } 
+        
+        
     }
 }
