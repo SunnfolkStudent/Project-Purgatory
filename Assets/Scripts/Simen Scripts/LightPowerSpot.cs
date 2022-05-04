@@ -25,6 +25,13 @@ public class LightPowerSpot : MonoBehaviour
     [SerializeField] private string animations;
     [SerializeField] private SCRUB canAnimateBool = null;
     [SerializeField] private EmpowermentPoint empower = null;
+    private SpriteRenderer spriteRend = null;
+    [SerializeField] private Sprite sprite = null;
+
+    #region Sounds
+    private AudioSource aSouce;
+    [SerializeField] private AudioClip lightTrigger;
+    #endregion
     
     
     [SerializeField] private Vector2[] lightDirection = {Vector2.zero, Vector2.left, Vector2.up, Vector2.right};
@@ -32,6 +39,7 @@ public class LightPowerSpot : MonoBehaviour
 
     private void Start()
     {
+        aSouce = GetComponent<AudioSource>();
         DisableLight();
         startPoint = lightPoint.transform.position;
         Points = new List<Vector3>();
@@ -138,7 +146,7 @@ public class LightPowerSpot : MonoBehaviour
         }
         return false;
     }
-
+    
     private void ReflectFurther(Vector2 origin, RaycastHit2D hitData)
     {
         Points.Add(hitData.point);
@@ -158,6 +166,9 @@ public class LightPowerSpot : MonoBehaviour
             if (newHitData.transform.CompareTag("LightTrigger") && canAnimateBool.canAnimate)
             {
                 _animator.Play(animations);
+                spriteRend = newHitData.transform.gameObject.GetComponent<SpriteRenderer>();
+                spriteRend.sprite = sprite;
+                aSouce.PlayOneShot(lightTrigger);
                 canAnimateBool.canAnimate = false;
             }
             else

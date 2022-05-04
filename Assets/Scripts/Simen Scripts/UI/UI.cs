@@ -31,6 +31,7 @@ public class UI : MonoBehaviour
 
     public void Return()
     {
-        
+        optionsMenu.SetActive(false);
+        mainMenu.SetActive(true);
     }
 }

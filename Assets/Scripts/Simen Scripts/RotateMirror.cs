@@ -7,9 +7,12 @@ public class RotateMirror : MonoBehaviour
     [SerializeField] private GameObject[] mirror;
     [SerializeField] private bool canFlip;
     private Animator _animator;
+    [SerializeField] private AudioClip leverSound;
+    private AudioSource audioSource;
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         _animator = GetComponent<Animator>();
     }
 
@@ -22,6 +25,7 @@ public class RotateMirror : MonoBehaviour
     {
         if (_input.Interact && canFlip)
         {
+            audioSource.PlayOneShot(leverSound);
             RotateArrayObject(mirror);
         }
     }

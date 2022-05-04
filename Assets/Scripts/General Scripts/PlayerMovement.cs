@@ -27,10 +27,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float decelerationForce = 200f;
     [SerializeField] private float decelerationAmount = 10f;
 
-    #region Animation
+    #region Animation and sounds
     
     private Animator anim;
     public bool isJumping;
+
+    private AudioSource source;
+    [SerializeField] private AudioClip walking; 
 
     #endregion
 
@@ -89,6 +92,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 anim.Play("Idle");
             }*/
+            if (_Input.MoveVector.x != 0){source.PlayOneShot(walking);}
         }
         else
         {
