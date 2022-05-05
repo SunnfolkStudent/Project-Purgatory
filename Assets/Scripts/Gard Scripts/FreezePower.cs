@@ -24,7 +24,7 @@ public class FreezePower : MonoBehaviour
         else //if (!FreezableObject.canFreezeObject)
         {
             //return;
-            PlayFreezeAnimation = false;
+            //PlayFreezeAnimation = false;
         }
     }
     

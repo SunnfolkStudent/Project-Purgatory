@@ -67,20 +67,9 @@ public class PlayerMovement : MonoBehaviour
         FlipPlayer();
         FreezeAnimationTrigger();
         LandingAudio();
-
-        if (!IsGrounded())
-        { inAir = true; }
-        else { inAir = false; }
     }
 
-    private void LandingAudio()
-    {
-        if (inAir && IsGrounded())
-        {
-            source.PlayOneShot(walking);
-            
-        }
-    }
+    
 
     private void FixedUpdate()
     {
@@ -89,6 +78,19 @@ public class PlayerMovement : MonoBehaviour
         if (isSliding)
         {
            //Decelerate(); This is disabled as its too buggy in the current implimentation
+        }
+    }
+    
+    private void LandingAudio()
+    {
+        if (!IsGrounded())
+        { inAir = true; }
+        
+        if (inAir && IsGrounded())
+        {
+            source.PlayOneShot(walking);
+            print("Landing sound");
+            inAir = false;
         }
     }
 
@@ -119,14 +121,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_FreezePower.PlayFreezeAnimation)
         {
-            print("FreezeAnimation");
             anim.Play("Freeze");
+            _FreezePower.PlayFreezeAnimation = false;
         }
     }
 
     public void PlayWalkSound()
     {
-        source.pitch = Random.Range(0.5f, 1.5f);
+        source.pitch = Random.Range(0.75f, 1.25f);
         source.PlayOneShot(walking);
     }
     
