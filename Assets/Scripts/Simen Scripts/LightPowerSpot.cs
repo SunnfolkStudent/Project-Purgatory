@@ -9,7 +9,7 @@ public class LightPowerSpot : MonoBehaviour
     private Ray2D ray;
     public Transform lightPoint;
     private bool isLightOn;
-    private int LightRange = 100;
+    private int LightRange = 1000;
     public LayerMask interactLayer;
 
     [SerializeField] private Vector2 startPoint, Direction;
@@ -161,10 +161,9 @@ public class LightPowerSpot : MonoBehaviour
         var newHitData = Physics2D.Raycast(hitData.point + (newDirection * 0.0001f), newDirection * 100, LightRange);
         if (newHitData)
         {
-            print(newHitData.transform.tag);
-            if ((hitData.transform.CompareTag("LightTrigger") || hitData.transform.CompareTag("LightPowerUp") || hitData.transform.CompareTag("Ground")) && !firstBounce) return;
+            if (((newHitData.transform.CompareTag("LightPowerUp") || newHitData.transform.CompareTag("Ground") || hitData.transform.CompareTag("LightTrigger")) && !firstBounce)) return;
 
-            if (newHitData.transform.CompareTag("LightTrigger") && canAnimateBool.canAnimate)
+            if ((newHitData.transform.CompareTag("LightTrigger") || hitData.transform.CompareTag("LightTrigger")) && canAnimateBool.canAnimate)
             {
                 _animator.Play(animations);
                 spriteRend = newHitData.transform.gameObject.GetComponent<SpriteRenderer>();
@@ -177,7 +176,7 @@ public class LightPowerSpot : MonoBehaviour
                 ReflectFurther(hitData.point, newHitData);
                 
                 ray = new Ray2D(newHitData.point, Vector2.Reflect(newDirection, newHitData.normal));
-                firstBounce = false;
+                firstBounce = true;
             }
             
             if (newHitData.transform.CompareTag("LightPowerUp") || hitData.transform.CompareTag("LightPowerUp"))
@@ -202,7 +201,6 @@ public class LightPowerSpot : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            print("No more light");
             atLightPoint = false;
             index = 0;
             DisableLight();
