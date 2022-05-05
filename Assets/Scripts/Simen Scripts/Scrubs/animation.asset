@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a51c4bdb94b16644f940969ea7a49404, type: 3}
   m_Name: animation
   m_EditorClassIdentifier: 
-  canAnimate: 1
+  canAnimate: 0

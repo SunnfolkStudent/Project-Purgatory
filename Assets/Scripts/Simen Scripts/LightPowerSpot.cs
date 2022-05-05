@@ -161,6 +161,7 @@ public class LightPowerSpot : MonoBehaviour
         var newHitData = Physics2D.Raycast(hitData.point + (newDirection * 0.0001f), newDirection * 100, LightRange);
         if (newHitData)
         {
+            print(newHitData.transform.tag);
             if ((hitData.transform.CompareTag("LightTrigger") || hitData.transform.CompareTag("LightPowerUp") || hitData.transform.CompareTag("Ground")) && !firstBounce) return;
 
             if (newHitData.transform.CompareTag("LightTrigger") && canAnimateBool.canAnimate)
@@ -179,7 +180,7 @@ public class LightPowerSpot : MonoBehaviour
                 firstBounce = false;
             }
             
-            if (newHitData.transform.CompareTag("LightPowerUp"))
+            if (newHitData.transform.CompareTag("LightPowerUp") || hitData.transform.CompareTag("LightPowerUp"))
             {
                 empower.CanEmpowerLight = true;
             }

@@ -21,7 +21,10 @@ public class EmpowermentPoint : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private string animation;
     [SerializeField] private SCRUB canAnimateBool;
-    private bool firstBounce = true;
+    public bool firstBounce = true;
+    private SpriteRenderer spriteRend;
+    [SerializeField] private Sprite sprite = null;
+
 
     public bool CanEmpowerLight;
 
@@ -85,7 +88,6 @@ public class EmpowermentPoint : MonoBehaviour
         if (IsTagTrue(hitData))
         {
             ReflectFurther(startPoint, hitData);
-            print(hitData.transform.tag);
         }
         else if (hitData.transform == null)
         {
@@ -120,8 +122,8 @@ public class EmpowermentPoint : MonoBehaviour
         ray = new Ray2D(spawnPointForLight.position, vector);
         currentReflections++;
 
-        if (hitData.transform.CompareTag("LightTrigger")) return;
-        
+        //if (hitData.transform.CompareTag("LightTrigger")) return;
+
         Vector2 inDirection = (hitData.point - origin).normalized;
         Vector2 newDirection = Vector2.Reflect(inDirection, hitData.normal);
         
@@ -129,27 +131,27 @@ public class EmpowermentPoint : MonoBehaviour
         var newHitData = Physics2D.Raycast(hitData.point + (newDirection * 0.0001f), newDirection * 100, lightRange);
         if (newHitData)
         {
-            if ((hitData.transform.CompareTag("LightTrigger") || hitData.transform.CompareTag("Ground")) && !firstBounce) return;
-
+            if ((newHitData.transform.CompareTag("LightTrigger") || newHitData.transform.CompareTag("Ground")) && !firstBounce) return;
+            
             if (newHitData.transform.CompareTag("LightTrigger") && canAnimateBool.canAnimate)
             {
+                print("I did run now, plz change");
+                spriteRend = newHitData.transform.gameObject.GetComponent<SpriteRenderer>();
+                spriteRend.sprite = sprite;
                 animator.Play(animation);
                 canAnimateBool.canAnimate = false;
             }
             else if (newHitData.transform.CompareTag("Ice") || newHitData.transform.CompareTag("WaterStreamIce"))
             {
-                // Do what is should when it hits ice here.
-                print(newHitData.transform.name);
                 FreezeableObjectEmp = newHitData.transform.gameObject.GetComponent<ChangeStateScript>();
                 FreezeableObjectEmp.ChangeState(); 
             }
             else
             {
-                print(hitData.transform.name);
                 ReflectFurther(hitData.point, newHitData);
                 
                 ray = new Ray2D(newHitData.point, Vector2.Reflect(newDirection, newHitData.normal));
-                firstBounce = false;
+                firstBounce = true;
             }
         }
         else
