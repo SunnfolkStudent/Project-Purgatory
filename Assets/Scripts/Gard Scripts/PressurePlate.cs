@@ -5,29 +5,16 @@ using UnityEngine;
 
 public class PressurePlate : MonoBehaviour
 {
-    private bool canPressdown;
+    //private bool canPressdown;
 
     [HideInInspector] public bool pressureplateActivatedHold;
-
-
-    private void Update()
-    {
-        if (canPressdown)
-        {
-            pressureplateActivatedHold = true;
-        }
-        else
-        {
-            pressureplateActivatedHold = false;
-        }
-    }
-
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Box" || other.gameObject.tag == "Player")
         {
-            canPressdown = true;
+            //canPressdown = true;
+            pressureplateActivatedHold = true;
         }
     }
 
@@ -35,7 +22,8 @@ public class PressurePlate : MonoBehaviour
     {
         if (other.gameObject.tag == "Box" || other.gameObject.tag == "Player")
         {
-            canPressdown = false;
+            //canPressdown = false;
+            pressureplateActivatedHold = false;
         }
     }
 }
