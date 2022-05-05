@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: c1442fd2a78446b4ebbf5d3e8d9871b8
+<<<<<<<< HEAD:Assets/Art/Character/Animations/Player_anima_walk_idle-Sheet.png.meta
+guid: 90edfb781b5b15b45963a21ad9cf8ac2
+========
+guid: 434e99d6cf9c8954fb58e5e93112f408
+>>>>>>>> e70d415c38d21e3d2fc25f93671f59f5839d7e67:Assets/Art/Objects/Zone A Objects/Light_point_front_stand.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

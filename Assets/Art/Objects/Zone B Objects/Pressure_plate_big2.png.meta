@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Art/Objects/Zone B Objects/Pressure_plate_big2.png.meta
 guid: 28e28c3088408034db592964ee577f11
+========
+guid: 5d8c608d43a2d8f47bfd685588f4f227
+>>>>>>>> e70d415c38d21e3d2fc25f93671f59f5839d7e67:Assets/Art/Objects/Zone A Objects/Light_point_front_hanging2.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
