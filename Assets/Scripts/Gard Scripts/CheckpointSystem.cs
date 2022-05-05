@@ -23,6 +23,7 @@ public class CheckpointSystem : MonoBehaviour
         if (other.gameObject.tag == "ResetZone")
         {
             //gameObject.transform.position = playerCurrentPosition;
+            _Rigidbody2D.velocity = Vector2.zero;
             Player.gameObject.transform.position = playerCurrentPosition;
         }
 

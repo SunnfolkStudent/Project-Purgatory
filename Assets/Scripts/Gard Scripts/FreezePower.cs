@@ -10,17 +10,21 @@ public class FreezePower : MonoBehaviour
     public Input _Input;
 
     [HideInInspector] public ChangeStateScript FreezableObject = null;
+
+    public bool PlayFreezeAnimation;
     
    
     void Update()
     {
         if (FreezableObject.canFreezeObject && _Input.Interact)
         {
+            PlayFreezeAnimation = true;
             FreezableObject.ChangeState();
         }
-        else if (!FreezableObject.canFreezeObject)
+        else //if (!FreezableObject.canFreezeObject)
         {
-            return;
+            //return;
+            PlayFreezeAnimation = false;
         }
     }
     

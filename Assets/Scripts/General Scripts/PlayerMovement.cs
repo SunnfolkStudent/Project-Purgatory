@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public Input _Input;
     public Rigidbody2D _Rigidbody2D;
+    public FreezePower _FreezePower;
 
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float jumpSpeed = 10f;
@@ -59,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
         }
         
         FlipPlayer();
+        FreezeAnimationTrigger();
     }
 
     private void FixedUpdate()
@@ -91,6 +93,15 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             anim.Play(_Rigidbody2D.velocity.y > 0 ? "Jump" : "Falling");
+        }
+    }
+
+    private void FreezeAnimationTrigger()
+    {
+        if (_FreezePower.PlayFreezeAnimation)
+        {
+            print("FreezeAnimation");
+            anim.Play("Freeze");
         }
     }
 
