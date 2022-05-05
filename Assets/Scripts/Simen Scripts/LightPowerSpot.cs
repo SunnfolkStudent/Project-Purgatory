@@ -154,13 +154,14 @@ public class LightPowerSpot : MonoBehaviour
         
         ray = new Ray2D(lightPoint.position, lightDirection[index]);
         currentReflections++;
-        
+
         Vector2 inDirection = (hitData.point - origin).normalized;
         Vector2 newDirection = Vector2.Reflect(inDirection, hitData.normal);
         
         var newHitData = Physics2D.Raycast(hitData.point + (newDirection * 0.0001f), newDirection * 100, LightRange);
         if (newHitData)
         {
+            print(newHitData.transform.name + newHitData.transform.tag);
             if (((newHitData.transform.CompareTag("LightPowerUp") || newHitData.transform.CompareTag("Ground") || hitData.transform.CompareTag("LightTrigger")) && !firstBounce)) return;
 
             if ((newHitData.transform.CompareTag("LightTrigger") || hitData.transform.CompareTag("LightTrigger")) && canAnimateBool.canAnimate)
