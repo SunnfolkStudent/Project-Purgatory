@@ -1,11 +1,14 @@
+using System;
 using UnityEngine;
 using Input = Assets.Scripts.General_Scripts.Input;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(AudioSource))]
 public class PlayerMovement : MonoBehaviour
 {
     public Input _Input;
     public Rigidbody2D _Rigidbody2D;
+    public FreezePower _FreezePower;
 
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float jumpSpeed = 10f;
@@ -17,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isFacingRight;
 
     private bool isSliding;
+    private bool inAir;
 
     private float deceleration;
     private bool isMovingLeft;
@@ -32,7 +36,8 @@ public class PlayerMovement : MonoBehaviour
     public bool isJumping;
 
     private AudioSource source;
-    [SerializeField] private AudioClip walking; 
+    [SerializeField] private AudioClip walking;
+    [SerializeField] private AudioClip jumping;
 
     #endregion
 
@@ -54,11 +59,27 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_Input.Jump && IsGrounded()/*grounded*/)
         {
+            source.PlayOneShot(jumping);
             _Rigidbody2D.velocity = new Vector2(_Rigidbody2D.velocity.x, jumpSpeed);
             isJumping = true;
         }
         
         FlipPlayer();
+        FreezeAnimationTrigger();
+        LandingAudio();
+
+        if (!IsGrounded())
+        { inAir = true; }
+        else { inAir = false; }
+    }
+
+    private void LandingAudio()
+    {
+        if (inAir && IsGrounded())
+        {
+            source.PlayOneShot(walking);
+            
+        }
     }
 
     private void FixedUpdate()
@@ -91,6 +112,15 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             anim.Play(_Rigidbody2D.velocity.y > 0 ? "Jump" : "Falling");
+        }
+    }
+
+    private void FreezeAnimationTrigger()
+    {
+        if (_FreezePower.PlayFreezeAnimation)
+        {
+            print("FreezeAnimation");
+            anim.Play("Freeze");
         }
     }
 
@@ -138,7 +168,15 @@ public class PlayerMovement : MonoBehaviour
             return false;
         }
     }
-    
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Ground")
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     private void Decelerate()
     {
         if (_Input.MoveVector.x == -1)
@@ -210,4 +248,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+    
+    
 }
