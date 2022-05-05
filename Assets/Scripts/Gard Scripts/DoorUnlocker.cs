@@ -8,35 +8,37 @@ public class DoorUnlocker : MonoBehaviour
     public PressurePlate _PressurePlateBox;
     public PressurePlatePlayer _PressurePlatePlayer;
 
-    [SerializeField] private Animator door;
+    [SerializeField] private Animator DoorAnimation;
     //[SerializeField] private Animator door2;
     //[SerializeField] private Animator door3;
     //[SerializeField] private Animator door4;
 
     [HideInInspector] public bool doorUnlocked;
+
+    [SerializeField] private string DoorAnimations;
     
 
     void Update()
     {
         if (_PressurePlatePlayer.pressureplateActivatedToggled)
         {
-            //gameObject.SetActive(false);
-            door.Play("FirstDoor");
-            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            //gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            DoorAnimation.Play(DoorAnimations);
             print("played animation");
 
         }
 
         if (_PressurePlateBox.pressureplateActivatedHold)
         {
-            door.Play("FirstDoor");
-            //gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            //door.Play("FirstDoor");
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            print("played animation");
+        }
+        else if (!_PressurePlateBox.pressureplateActivatedHold && _PressurePlatePlayer.pressureplateActivatedToggled)
+        { 
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
         else
         {
-            //gameObject.GetComponent<SpriteRenderer>().enabled = true;
             gameObject.GetComponent<BoxCollider2D>().enabled = true;
         }
     }
