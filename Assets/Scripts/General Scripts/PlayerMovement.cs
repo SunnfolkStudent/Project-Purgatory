@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using Input = Assets.Scripts.General_Scripts.Input;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(AudioSource))]
 public class PlayerMovement : MonoBehaviour
@@ -18,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isFacingRight;
 
     private bool isSliding;
+    private bool inAir;
 
     private float deceleration;
     private bool isMovingLeft;
@@ -64,14 +67,18 @@ public class PlayerMovement : MonoBehaviour
         FlipPlayer();
         FreezeAnimationTrigger();
         LandingAudio();
+
+        if (!IsGrounded())
+        { inAir = true; }
+        else { inAir = false; }
     }
 
     private void LandingAudio()
     {
-        if (isJumping && IsGrounded())
+        if (inAir && IsGrounded())
         {
             source.PlayOneShot(walking);
-            isJumping = false;
+            
         }
     }
 
@@ -161,7 +168,15 @@ public class PlayerMovement : MonoBehaviour
             return false;
         }
     }
-    
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Ground")
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     private void Decelerate()
     {
         if (_Input.MoveVector.x == -1)
@@ -233,4 +248,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+    
+    
 }
