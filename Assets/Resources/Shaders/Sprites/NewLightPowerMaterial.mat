@@ -34,8 +34,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _LightEdgeSmoothness: 10
-    - _LightScale: 1.5
+    - _LightEdgeSmoothness: 100
+    - _LightScale: 1
     - _LineThickness: 30
     m_Colors:
     - _Color: {r: 1, g: 0.8773559, b: 0, a: 0}
