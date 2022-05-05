@@ -23,19 +23,20 @@ public class DoorUnlocker : MonoBehaviour
             //gameObject.SetActive(false);
             door.Play("FirstDoor");
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            print("door ublocked");
+            print("played animation");
 
         }
 
         if (_PressurePlateBox.pressureplateActivatedHold)
         {
-            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            door.Play("FirstDoor");
+            //gameObject.GetComponent<SpriteRenderer>().enabled = false;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            //This can be changed to play animation
+            print("played animation");
         }
         else
         {
-            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            //gameObject.GetComponent<SpriteRenderer>().enabled = true;
             gameObject.GetComponent<BoxCollider2D>().enabled = true;
         }
     }
