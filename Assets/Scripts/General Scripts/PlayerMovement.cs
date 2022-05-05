@@ -33,7 +33,8 @@ public class PlayerMovement : MonoBehaviour
     public bool isJumping;
 
     private AudioSource source;
-    [SerializeField] private AudioClip walking; 
+    [SerializeField] private AudioClip walking;
+    [SerializeField] private AudioClip jumping;
 
     #endregion
 
@@ -55,12 +56,23 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_Input.Jump && IsGrounded()/*grounded*/)
         {
+            source.PlayOneShot(jumping);
             _Rigidbody2D.velocity = new Vector2(_Rigidbody2D.velocity.x, jumpSpeed);
             isJumping = true;
         }
         
         FlipPlayer();
         FreezeAnimationTrigger();
+        LandingAudio();
+    }
+
+    private void LandingAudio()
+    {
+        if (isJumping && IsGrounded())
+        {
+            source.PlayOneShot(walking);
+            isJumping = false;
+        }
     }
 
     private void FixedUpdate()
