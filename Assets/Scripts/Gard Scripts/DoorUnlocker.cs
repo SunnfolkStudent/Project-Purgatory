@@ -16,30 +16,28 @@ public class DoorUnlocker : MonoBehaviour
     [HideInInspector] public bool doorUnlocked;
 
     [SerializeField] private string DoorAnimations;
+    [SerializeField] private string DoorCloseAnimations;
+
+    private bool Open;
     
 
     void Update()
     {
         if (_PressurePlatePlayer.pressureplateActivatedToggled)
         {
-            //gameObject.GetComponent<BoxCollider2D>().enabled = false;
             DoorAnimation.Play(DoorAnimations);
-            print("played animation");
-
         }
 
         if (_PressurePlateBox.pressureplateActivatedHold)
         {
-            //door.Play("FirstDoor");
-            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            
+            DoorAnimation.Play(DoorAnimations);
+            Open = true;
         }
-        else if (!_PressurePlateBox.pressureplateActivatedHold && _PressurePlatePlayer.pressureplateActivatedToggled)
+        else if (!_PressurePlateBox.pressureplateActivatedHold && Open)
         { 
-            gameObject.GetComponent<BoxCollider2D>().enabled = false;
-        }
-        else
-        {
-            gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            DoorAnimation.Play(DoorCloseAnimations);
+            Open = false;
         }
     }
 }
