@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: d1abc07212b646a4f8240af4f4f37268
+<<<<<<<< HEAD:Assets/Art/Backgrounds/Paralaxing planes/Zone A/Front Fog layer.png.meta
+guid: c34524c69cd322747b80bb3dd3b5d22b
+========
+guid: 034e9164ad5af584e9d1fa604df7aa60
+>>>>>>>> abfe61e577a93d7f590c5bfa54608b43960ad1d6:Assets/Art/Character/Power up/Player_anima_Powerup.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 48
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -66,6 +70,33 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
+<<<<<<<< HEAD:Assets/Art/Backgrounds/Paralaxing planes/Zone A/Front Fog layer.png.meta
+========
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+>>>>>>>> abfe61e577a93d7f590c5bfa54608b43960ad1d6:Assets/Art/Character/Power up/Player_anima_Powerup.png.meta
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
