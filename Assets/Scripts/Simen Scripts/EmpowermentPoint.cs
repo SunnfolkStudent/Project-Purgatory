@@ -135,7 +135,6 @@ public class EmpowermentPoint : MonoBehaviour
             
             if (newHitData.transform.CompareTag("LightTrigger") && canAnimateBool.canAnimate)
             {
-                print("I did run now, plz change");
                 spriteRend = newHitData.transform.gameObject.GetComponent<SpriteRenderer>();
                 spriteRend.sprite = sprite;
                 animator.Play(animation);
