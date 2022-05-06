@@ -16,7 +16,7 @@ public class FreezePower : MonoBehaviour
    
     void Update()
     {
-        if (FreezableObject.canFreezeObject && _Input.Interact)
+        if (FreezableObject.canFreezeObject && _Input.Interact && GameStatus.HasPickedUpFreezePower)
         {
             PlayFreezeAnimation = true;
             FreezableObject.ChangeState();

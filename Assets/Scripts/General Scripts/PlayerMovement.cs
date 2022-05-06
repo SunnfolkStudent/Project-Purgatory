@@ -41,6 +41,10 @@ public class PlayerMovement : MonoBehaviour
 
     public bool playingFreezeAnimation;
     [HideInInspector] public bool CantPlayStreamSound;
+
+    public bool playingAquireFreezeAnimation;
+    private bool canPlayAquireFreezeAnimation;
+    public bool HideFreezePowerUp;
     
     #endregion
 
@@ -59,6 +63,8 @@ public class PlayerMovement : MonoBehaviour
         _Rigidbody2D = GetComponent<Rigidbody2D>();
         isFacingLeft = false;
         isFacingRight = true;
+        playingFreezeAnimation = true;
+        canPlayAquireFreezeAnimation = true;
     }
 
     private void Update()
@@ -111,15 +117,24 @@ public class PlayerMovement : MonoBehaviour
 
     private void animations()
     {
-        if (IsGrounded() && !playingFreezeAnimation)
+        if (IsGrounded() && !playingFreezeAnimation && !playingAquireFreezeAnimation)
         {
             //          if this       is not 0  True     false
             anim.Play(_Input.MoveVector.x != 0 ? "Walk" : "Idle");
         }
-        else if (!playingFreezeAnimation)
+        else if (!playingFreezeAnimation && !playingAquireFreezeAnimation)
         {
             anim.Play(_Rigidbody2D.velocity.y > 0 ? "Jump" : "Falling");
         }
+
+        if (GameStatus.HasPickedUpFreezePower && canPlayAquireFreezeAnimation)
+        {
+            anim.Play("Aquire Freeze");
+            playingFreezeAnimation = true;
+            HideFreezePowerUp = true;
+            canPlayAquireFreezeAnimation = false;
+        }
+        
     }
 
     private void FreezeAnimationTrigger()

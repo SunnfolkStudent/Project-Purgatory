@@ -47,6 +47,7 @@ public class CheckpointSystem : MonoBehaviour
         if (other.gameObject.tag == "FreezePowerPickup" && _Input.Interact)
         {
             GameStatus.HasPickedUpFreezePower = true;
+            print("Player in zone");
         }
     }
 }
