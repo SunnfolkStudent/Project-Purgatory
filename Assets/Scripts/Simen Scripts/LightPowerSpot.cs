@@ -22,6 +22,7 @@ public class LightPowerSpot : MonoBehaviour
     public bool firstBounce = false;
     public bool FirstLightTriggerHit = false;
     public bool LightPowerUpTrue = false;
+    public bool HitGround = false;
 
     public string[] tags;
     [SerializeField] private Animator _animator;
@@ -107,6 +108,8 @@ public class LightPowerSpot : MonoBehaviour
             aSouce.Stop();
             FirstLightTriggerHit = false;
             LightPowerUpTrue = false;
+            HitGround = false;
+            firstBounce = false;
             if (empower == null) return;
             empower.CanEmpowerLight = false;
         }
@@ -168,16 +171,13 @@ public class LightPowerSpot : MonoBehaviour
         Vector2 inDirection = (hitData.point - origin).normalized;
         Vector2 newDirection = Vector2.Reflect(inDirection, hitData.normal);
         
-        var newHitData = Physics2D.Raycast(hitData.point + (newDirection * 0.0001f), newDirection * 100, LightRange);
+        var newHitData = Physics2D.Raycast(hitData.point + (newDirection * 0.0001f), newDirection * 100, LightRange, interactLayer);
         if (newHitData || hitData)
         {
-            print("Running1");
-            if ((newHitData.transform.CompareTag("Ground") || newHitData.transform.CompareTag("Ground")) && firstBounce) return;
-            print("Running2");
-            if ((newHitData.transform.CompareTag("LightTrigger") || hitData.transform.CompareTag("LightTrigger")) && FirstLightTriggerHit) return;
-            print("Running3");
-            if ((hitData.transform.CompareTag("LightPowerUp") || hitData.transform.CompareTag("LightPowerUp")) && LightPowerUpTrue) return;
-            print("Running4");
+            if ((newHitData.transform.CompareTag("Ground") || hitData.transform.CompareTag("Ground")) && HitGround && !firstBounce) return;
+            print("Runnning now");
+            if ((newHitData.transform.CompareTag("LightPowerUp") || hitData.transform.CompareTag("LightPowerUp")) && LightPowerUpTrue && !firstBounce) return;
+            if ((newHitData.transform.CompareTag("LightTrigger") || hitData.transform.CompareTag("LightTrigger")) && FirstLightTriggerHit && !firstBounce) return;
             
             if (newHitData.transform.CompareTag("LightTrigger") && canAnimateBool.canAnimate)
             {
@@ -197,10 +197,14 @@ public class LightPowerSpot : MonoBehaviour
                 canAnimateBool.canAnimate = false;
                 FirstLightTriggerHit = true;
             }
-            else if(newHitData.transform.CompareTag("LightPowerUp") || hitData.transform.CompareTag("LightPowerUp"))
+            else if (newHitData.transform.CompareTag("LightPowerUp") || hitData.transform.CompareTag("LightPowerUp"))
             {
                 empower.CanEmpowerLight = true;
                 LightPowerUpTrue = true;
+            }
+            else if ((newHitData.transform.CompareTag("Ground") || hitData.transform.CompareTag("Ground")) && !HitGround)
+            {
+                HitGround = true;
             }
             else
             {
@@ -213,7 +217,6 @@ public class LightPowerSpot : MonoBehaviour
         else
         {
             Points.Add(hitData.point + newDirection * LightRange);
-            firstBounce = true;
         }
     }
 

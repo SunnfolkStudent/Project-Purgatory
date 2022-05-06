@@ -1,6 +1,6 @@
 using UnityEngine;
 using Input = Assets.Scripts.General_Scripts.Input;
-
+[RequireComponent(typeof(AudioSource))]
 public class RotateMirror : MonoBehaviour
 {
     [SerializeField] private Input _input;
