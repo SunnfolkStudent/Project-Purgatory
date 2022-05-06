@@ -32,6 +32,8 @@ TagManager:
   - Camera3Exit
   - Camera4Exit
   - BoxPuzzleFix
+  - TPtoHUBfromZoneA
+  - TPtoHUBformZoneB
   layers:
   - Default
   - TransparentFX
