@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Input = Assets.Scripts.General_Scripts.Input;
 
+[RequireComponent(typeof(AudioSource))]
 public class LightPowerSpot : MonoBehaviour
 {
     [SerializeField] private Input _input;
@@ -158,11 +159,13 @@ public class LightPowerSpot : MonoBehaviour
         Vector2 inDirection = (hitData.point - origin).normalized;
         Vector2 newDirection = Vector2.Reflect(inDirection, hitData.normal);
         
+        if (hitData.transform.CompareTag("LightPowerUp") || hitData.transform.CompareTag("Ground") || hitData.transform.CompareTag("LightTrigger")) return;
+        
         var newHitData = Physics2D.Raycast(hitData.point + (newDirection * 0.0001f), newDirection * 100, LightRange);
         if (newHitData)
         {
-            print(newHitData.transform.name + newHitData.transform.tag);
-            if (((newHitData.transform.CompareTag("LightPowerUp") || newHitData.transform.CompareTag("Ground") || hitData.transform.CompareTag("LightTrigger")) && !firstBounce)) return;
+            print(newHitData.transform.tag);
+            if ((newHitData.transform.CompareTag("LightPowerUp") || newHitData.transform.CompareTag("Ground") || newHitData.transform.CompareTag("LightTrigger")) && !firstBounce) return;
 
             if ((newHitData.transform.CompareTag("LightTrigger") || hitData.transform.CompareTag("LightTrigger")) && canAnimateBool.canAnimate)
             {
@@ -188,6 +191,7 @@ public class LightPowerSpot : MonoBehaviour
         else
         {
             Points.Add(hitData.point + newDirection * LightRange);
+            firstBounce = false;
         }
     }
 
