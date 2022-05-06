@@ -26,12 +26,10 @@ public class BoxPuzzleFix : MonoBehaviour
         if (hasentered)
         {
             _CompositeCollider2D.isTrigger = false;
-            print("solid");
         }
         else
         {
             _CompositeCollider2D.isTrigger = true;
-            print("passthrough");
         }
     }
 

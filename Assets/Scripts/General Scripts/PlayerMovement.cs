@@ -89,7 +89,6 @@ public class PlayerMovement : MonoBehaviour
         if (inAir && IsGrounded())
         {
             source.PlayOneShot(walking);
-            print("Landing sound");
             inAir = false;
         }
     }
@@ -168,14 +167,6 @@ public class PlayerMovement : MonoBehaviour
         else if (RaycastTargetBehind != null && RaycastTargetCenter != null && RaycastTargetCenter.transform == null && RaycastTargetBehind.transform == null) return false;
         {
             return false;
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "Ground")
-        {
-            throw new NotImplementedException();
         }
     }
 

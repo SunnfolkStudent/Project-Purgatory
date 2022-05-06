@@ -7,6 +7,8 @@ public class PressurePlate : MonoBehaviour
 {
     //private bool canPressdown;
 
+    [SerializeField] private Animator _Animator;
+
     [HideInInspector] public bool pressureplateActivatedHold;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -15,6 +17,7 @@ public class PressurePlate : MonoBehaviour
         {
             //canPressdown = true;
             pressureplateActivatedHold = true;
+            _Animator.Play("PressurePlate");
         }
     }
 
@@ -23,6 +26,7 @@ public class PressurePlate : MonoBehaviour
         if (other.gameObject.tag == "Box" || other.gameObject.tag == "Player")
         {
             //canPressdown = false;
+            _Animator.Play("PressureplateUp");
             pressureplateActivatedHold = false;
         }
     }
