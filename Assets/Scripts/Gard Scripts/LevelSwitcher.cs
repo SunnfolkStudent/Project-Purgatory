@@ -7,31 +7,42 @@ public class LevelSwitcher : MonoBehaviour
 {
     public SceneController _SceneController;
 
+    [SerializeField] private GameObject LoadingScreen;
+
     //[SerializeField] private GameStatus _GameStatus;
 
+    private void Start()
+    {
+        LoadingScreen.SetActive(false);
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "TPtoZoneA")
         {
+            LoadingScreen.SetActive(true);
             _SceneController.LoadScene("Zone A");
         }
 
         if (other.gameObject.tag == "TPtoZoneB")
         {
+            LoadingScreen.SetActive(true);
             _SceneController.LoadScene("Zone B");
         }
 
         if (other.gameObject.tag == "TPtoHUBfromZoneA")
-        {
+        { 
+            LoadingScreen.SetActive(true); 
+            GameStatus.HasCompletedZoneA = true;
            _SceneController.LoadScene("Hub");
-           GameStatus.HasCompletedZoneA = true;
+           
         }
         
         if (other.gameObject.tag == "TPtoHUBformZoneB")
         {
-            _SceneController.LoadScene("Hub");
+            LoadingScreen.SetActive(true);
             GameStatus.HasCompletedZoneB = true;
+            _SceneController.LoadScene("Hub");
         }
     }
 }
