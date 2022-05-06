@@ -20,6 +20,7 @@ public class LightPowerSpot : MonoBehaviour
     const int Infinity = 999;
     private bool atLightPoint;
     private bool firstBounce = true;
+    public bool FirstLightTriggerHit;
 
     public string[] tags;
     [SerializeField] private Animator _animator;
@@ -30,9 +31,9 @@ public class LightPowerSpot : MonoBehaviour
     [SerializeField] private Sprite sprite = null;
 
     #region Sounds
+    public float LightSoundEffectVolume;
     private AudioSource aSouce;
     [SerializeField] private AudioClip lightTrigger;
-    [SerializeField] private AudioClip LightStartUp;
     [SerializeField] private AudioClip LightOnSound;
     #endregion
     
@@ -48,6 +49,7 @@ public class LightPowerSpot : MonoBehaviour
         Points = new List<Vector3>();
         canAnimateBool.canAnimate = true;
         index = 0;
+        aSouce.volume = LightSoundEffectVolume;
     }
 
     private void Update()
@@ -112,7 +114,6 @@ public class LightPowerSpot : MonoBehaviour
             if (_input.Interact)
             {
                 index = (index + 1) % lightDirection.Length;
-                aSouce.PlayOneShot(LightStartUp);
                 DisableLight();
             }
         }
@@ -152,6 +153,7 @@ public class LightPowerSpot : MonoBehaviour
         return false;
     }
     
+    // ReSharper disable Unity.PerformanceAnalysis
     private void ReflectFurther(Vector2 origin, RaycastHit2D hitData)
     {
         aSouce.PlayOneShot(LightOnSound);
@@ -164,39 +166,51 @@ public class LightPowerSpot : MonoBehaviour
         Vector2 inDirection = (hitData.point - origin).normalized;
         Vector2 newDirection = Vector2.Reflect(inDirection, hitData.normal);
         
-        if (hitData.transform.CompareTag("LightPowerUp") || hitData.transform.CompareTag("Ground") || hitData.transform.CompareTag("LightTrigger")) return;
-        
         var newHitData = Physics2D.Raycast(hitData.point + (newDirection * 0.0001f), newDirection * 100, LightRange);
-        if (newHitData)
+        if (newHitData || hitData)
         {
-            print(newHitData.transform.tag);
-            if ((newHitData.transform.CompareTag("LightPowerUp") || newHitData.transform.CompareTag("Ground") || newHitData.transform.CompareTag("LightTrigger")) && !firstBounce) return;
+            print(FirstLightTriggerHit);
 
-            if ((newHitData.transform.CompareTag("LightTrigger") || hitData.transform.CompareTag("LightTrigger")) && canAnimateBool.canAnimate)
+            if ((newHitData.transform.CompareTag("LightPowerUp") || newHitData.transform.CompareTag("Ground") || newHitData.transform.CompareTag("LightTrigger")) && firstBounce) return;
+            if ((hitData.transform.CompareTag("LightPowerUp") || hitData.transform.CompareTag("Ground") || hitData.transform.CompareTag("LightTrigger")) && FirstLightTriggerHit) return;
+            print(hitData.transform.tag);
+
+            if (newHitData.transform.CompareTag("LightTrigger") && canAnimateBool.canAnimate)
             {
                 _animator.Play(animations);
                 spriteRend = newHitData.transform.gameObject.GetComponent<SpriteRenderer>();
                 spriteRend.sprite = sprite;
                 aSouce.PlayOneShot(lightTrigger);
                 canAnimateBool.canAnimate = false;
+                FirstLightTriggerHit = true;
+                firstBounce = true;
+            }
+            else if (hitData.transform.CompareTag("LightTrigger") && canAnimateBool)
+            {
+                _animator.Play(animations);
+                spriteRend = hitData.transform.gameObject.GetComponent<SpriteRenderer>();
+                spriteRend.sprite = sprite;
+                aSouce.PlayOneShot(lightTrigger);
+                canAnimateBool.canAnimate = false;
+                FirstLightTriggerHit = true;
+                firstBounce = true;
+            }
+            else if(newHitData.transform.CompareTag("LightPowerUp") || hitData.transform.CompareTag("LightPowerUp"))
+            {
+                empower.CanEmpowerLight = true;
+                firstBounce = true;
             }
             else
             {
                 ReflectFurther(hitData.point, newHitData);
                 
                 ray = new Ray2D(newHitData.point, Vector2.Reflect(newDirection, newHitData.normal));
-                firstBounce = true;
-            }
-            
-            if (newHitData.transform.CompareTag("LightPowerUp") || hitData.transform.CompareTag("LightPowerUp"))
-            {
-                empower.CanEmpowerLight = true;
             }
         }
         else
         {
             Points.Add(hitData.point + newDirection * LightRange);
-            firstBounce = false;
+            firstBounce = true;
         }
     }
 
