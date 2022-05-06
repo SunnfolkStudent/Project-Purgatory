@@ -32,6 +32,8 @@ public class LightPowerSpot : MonoBehaviour
     #region Sounds
     private AudioSource aSouce;
     [SerializeField] private AudioClip lightTrigger;
+    [SerializeField] private AudioClip LightStartUp;
+    [SerializeField] private AudioClip LightOnSound;
     #endregion
     
     
@@ -100,6 +102,7 @@ public class LightPowerSpot : MonoBehaviour
         {
             LineRenderer.enabled = false;
             LineRenderer.positionCount = 1;
+            aSouce.Stop();
             if (empower == null) return;
             empower.CanEmpowerLight = false;
         }
@@ -109,6 +112,7 @@ public class LightPowerSpot : MonoBehaviour
             if (_input.Interact)
             {
                 index = (index + 1) % lightDirection.Length;
+                aSouce.PlayOneShot(LightStartUp);
                 DisableLight();
             }
         }
@@ -150,6 +154,7 @@ public class LightPowerSpot : MonoBehaviour
     
     private void ReflectFurther(Vector2 origin, RaycastHit2D hitData)
     {
+        aSouce.PlayOneShot(LightOnSound);
         Points.Add(hitData.point);
         if (currentReflections > maxReflections) return;
         
