@@ -11,6 +11,10 @@ public class CheckpointSystem : MonoBehaviour
     public Rigidbody2D _Rigidbody2D;
 
     public GameObject Player;
+
+
+    [SerializeField] private AudioClip PlayerDeathSFX;
+    [SerializeField] private AudioSource _AudioSource;
     
     void Start()
     {
@@ -23,6 +27,7 @@ public class CheckpointSystem : MonoBehaviour
         if (other.gameObject.tag == "ResetZone")
         {
             //gameObject.transform.position = playerCurrentPosition;
+            _AudioSource.PlayOneShot(PlayerDeathSFX);
             _Rigidbody2D.velocity = Vector2.zero;
             Player.gameObject.transform.position = playerCurrentPosition;
         }

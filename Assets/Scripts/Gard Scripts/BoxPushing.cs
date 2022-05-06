@@ -15,6 +15,9 @@ public class BoxPushing : MonoBehaviour
     private bool isgrounded;
 
     private Vector2 startPosition;
+
+    [SerializeField] private AudioSource _AudioSource;
+    [SerializeField] private AudioClip SmashSound;
     
     
     void Start()
@@ -72,6 +75,7 @@ public class BoxPushing : MonoBehaviour
     {
         if (other.gameObject.tag == "ResetZone")
         {
+            _AudioSource.PlayOneShot(SmashSound);
             gameObject.transform.position = startPosition;
             _Rigidbody2D.velocity = Vector2.zero;
         }
