@@ -43,7 +43,9 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private GameObject spawnPointLeft;
     [SerializeField] private GameObject RaycastTargetCenter = null; 
-    [SerializeField] private GameObject RaycastTargetBehind = null; 
+    [SerializeField] private GameObject RaycastTargetBehind = null;
+
+    public bool playingFreezeAnimation;
     
     private void Start()
     {
@@ -105,12 +107,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void animations()
     {
-        if (IsGrounded())
+        if (IsGrounded() && !playingFreezeAnimation)
         {
             //          if this       is not 0  True     false
             anim.Play(_Input.MoveVector.x != 0 ? "Walk" : "Idle");
         }
-        else
+        else if (!playingFreezeAnimation)
         {
             anim.Play(_Rigidbody2D.velocity.y > 0 ? "Jump" : "Falling");
         }
@@ -124,7 +126,6 @@ public class PlayerMovement : MonoBehaviour
             _FreezePower.PlayFreezeAnimation = false;
         }
     }
-
     public void PlayWalkSound()
     {
         source.pitch = Random.Range(0.75f, 1.25f);

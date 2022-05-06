@@ -19,7 +19,11 @@ public class ChangeStateScript : MonoBehaviour
     [SerializeField] private PhysicsMaterial2D defultMaterial;
     [SerializeField] private CompositeCollider2D WaterCompositeCollider2D = null;
 
-    public bool canFreezeObject; 
+    public bool canFreezeObject;
+
+    [SerializeField] private AudioSource _AudioSource;
+    [SerializeField] private AudioClip FreezeSFX;
+    [SerializeField] private AudioClip UnFreezeSFX;
 
     private void Start()
     {
@@ -41,20 +45,24 @@ public class ChangeStateScript : MonoBehaviour
         if (isWater)
         {
             gameObject.tag = "Ice";
+            _AudioSource.PlayOneShot(FreezeSFX);
         }
         else if (isIce)
         {
             gameObject.tag = "Water";
+            _AudioSource.PlayOneShot(UnFreezeSFX);
         }
 
         
         if (isWaterStream && !_WaterStreamPushing.canPush)
         {
             gameObject.tag = "WaterStreamIce";
+            _AudioSource.PlayOneShot(FreezeSFX);
         }
         else if (isIceStream)
         {
             gameObject.tag = "WaterStream";
+            _AudioSource.PlayOneShot(UnFreezeSFX);
         }
     }
     
