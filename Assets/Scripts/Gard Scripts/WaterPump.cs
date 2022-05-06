@@ -22,6 +22,9 @@ public class WaterPump : MonoBehaviour
     [HideInInspector] public bool canflip;
     [SerializeField] private Animator _Animator;
 
+    [SerializeField] private AudioSource _AudioSource;
+    [SerializeField] private AudioClip LeverSFX;
+
     private void Start()
     {
         WaterStream1.gameObject.SetActive(false);
@@ -42,6 +45,7 @@ public class WaterPump : MonoBehaviour
         if (canflip && _Input.Interact)
         {
             _Animator.Play("LightLever");
+            _AudioSource.PlayOneShot(LeverSFX);
         }
 
     }

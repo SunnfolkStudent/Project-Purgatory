@@ -18,12 +18,14 @@ public class ChangeStateScript : MonoBehaviour
     [SerializeField] private PhysicsMaterial2D iceMaterial;
     [SerializeField] private PhysicsMaterial2D defultMaterial;
     [SerializeField] private CompositeCollider2D WaterCompositeCollider2D = null;
+    [SerializeField] private GameObject waterStreamVisual;
 
     public bool canFreezeObject;
 
     [SerializeField] private AudioSource _AudioSource;
     [SerializeField] private AudioClip FreezeSFX;
     [SerializeField] private AudioClip UnFreezeSFX;
+    [SerializeField] private AudioClip WaterStreamSFX;
 
     private void Start()
     {
@@ -32,6 +34,10 @@ public class ChangeStateScript : MonoBehaviour
         isIceStream = false;
         isWaterStream = false;
         canFreezeObject = false;
+
+        _AudioSource.volume = 0.5f;
+
+
     }
 
     void Update()
@@ -99,6 +105,8 @@ public class ChangeStateScript : MonoBehaviour
             gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
             gameObject.GetComponent<BoxCollider2D>().sharedMaterial = defultMaterial;
             IceVisualTile.SetActive(false);
+            waterStreamVisual.SetActive(true); 
+
         }
 
         if (gameObject.tag == "WaterStreamIce")
@@ -110,6 +118,7 @@ public class ChangeStateScript : MonoBehaviour
             gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
             gameObject.GetComponent<BoxCollider2D>().sharedMaterial = iceMaterial;
             IceVisualTile.SetActive(true);
+            waterStreamVisual.SetActive(false);
         }
     }
 
