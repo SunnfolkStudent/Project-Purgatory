@@ -39,13 +39,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioClip walking;
     [SerializeField] private AudioClip jumping;
 
+    public bool playingFreezeAnimation;
+    [HideInInspector] public bool CantPlayStreamSound;
+    
     #endregion
 
     [SerializeField] private GameObject spawnPointLeft;
     [SerializeField] private GameObject RaycastTargetCenter = null; 
     [SerializeField] private GameObject RaycastTargetBehind = null;
 
-    public bool playingFreezeAnimation;
+    
+    
     
     private void Start()
     {
@@ -242,6 +246,21 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-    
-    
+
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Camera1Exit" || other.gameObject.tag == "Camera2Exit" || other.gameObject.tag == "Camera3Exit" || other.gameObject.tag == "Camera4Exit")
+        {
+            CantPlayStreamSound = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Camera1Exit" || other.gameObject.tag == "Camera2Exit" || other.gameObject.tag == "Camera3Exit" || other.gameObject.tag == "Camera4Exit")
+        {
+            CantPlayStreamSound = false;
+        }
+    }
 }
