@@ -29,24 +29,28 @@ public class CameraSwitcher : MonoBehaviour
         {
             FollowCamera.SetActive(false);
             Camera1.SetActive(true);
+            print("cam1");
         }
 
         if (other.gameObject.tag == "Camera2")
         {
             FollowCamera.SetActive(false);
             Camera2.SetActive(true);
+            print("cam2");
         }
 
         if (other.gameObject.tag == "Camera3")
         {
             FollowCamera.SetActive(false);
             Camera3.SetActive(true);
+            print("cam3");
         }
 
         if (other.gameObject.tag == "Camera4")
         {
             FollowCamera.SetActive(false);
             Camera4.SetActive(true);
+            print("cam4");
         }
     }
 
