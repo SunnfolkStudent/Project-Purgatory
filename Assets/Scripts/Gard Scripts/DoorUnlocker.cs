@@ -10,9 +10,6 @@ public class DoorUnlocker : MonoBehaviour
     public PressurePlatePlayer _PressurePlatePlayer;
 
     [SerializeField] private Animator DoorAnimation;
-    //[SerializeField] private Animator door2;
-    //[SerializeField] private Animator door3;
-    //[SerializeField] private Animator door4;
 
     [HideInInspector] public bool doorUnlocked;
 
@@ -50,8 +47,8 @@ public class DoorUnlocker : MonoBehaviour
         {
             if (canPlayAudio)
             {
-               _AudioSource.PlayOneShot(DoorSFX);
-               canPlayAudio = false;
+                _AudioSource.PlayOneShot(DoorSFX);
+                canPlayAudio = false;
             }
             
             DoorAnimation.Play(DoorAnimations);
@@ -61,6 +58,7 @@ public class DoorUnlocker : MonoBehaviour
         { 
             DoorAnimation.Play(DoorCloseAnimations);
             Open = false;
+            canPlayAudio = true;
         }
     }
 }

@@ -21,8 +21,7 @@ public class PressurePlatePlayer : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             pressureplateActivatedToggled = true;
-            //Animation.Play(PressurePlateAnimations);
-            print("pressed");
+            Animation.Play(PressurePlateAnimations);
         }
     }
     
