@@ -19,8 +19,9 @@ public class LightPowerSpot : MonoBehaviour
     private List<Vector3> Points;
     const int Infinity = 999;
     private bool atLightPoint;
-    private bool firstBounce = true;
-    public bool FirstLightTriggerHit;
+    public bool firstBounce = false;
+    public bool FirstLightTriggerHit = false;
+    public bool LightPowerUpTrue = false;
 
     public string[] tags;
     [SerializeField] private Animator _animator;
@@ -36,7 +37,6 @@ public class LightPowerSpot : MonoBehaviour
     [SerializeField] private AudioClip lightTrigger;
     [SerializeField] private AudioClip LightOnSound;
     #endregion
-    
     
     [SerializeField] private Vector2[] lightDirection = {Vector2.zero, Vector2.left, Vector2.up, Vector2.right};
     public int index;
@@ -105,6 +105,8 @@ public class LightPowerSpot : MonoBehaviour
             LineRenderer.enabled = false;
             LineRenderer.positionCount = 1;
             aSouce.Stop();
+            FirstLightTriggerHit = false;
+            LightPowerUpTrue = false;
             if (empower == null) return;
             empower.CanEmpowerLight = false;
         }
@@ -169,12 +171,14 @@ public class LightPowerSpot : MonoBehaviour
         var newHitData = Physics2D.Raycast(hitData.point + (newDirection * 0.0001f), newDirection * 100, LightRange);
         if (newHitData || hitData)
         {
-            print(FirstLightTriggerHit);
-
-            if ((newHitData.transform.CompareTag("LightPowerUp") || newHitData.transform.CompareTag("Ground") || newHitData.transform.CompareTag("LightTrigger")) && firstBounce) return;
-            if ((hitData.transform.CompareTag("LightPowerUp") || hitData.transform.CompareTag("Ground") || hitData.transform.CompareTag("LightTrigger")) && FirstLightTriggerHit) return;
-            print(hitData.transform.tag);
-
+            print("Running1");
+            if ((newHitData.transform.CompareTag("Ground") || newHitData.transform.CompareTag("Ground")) && firstBounce) return;
+            print("Running2");
+            if ((newHitData.transform.CompareTag("LightTrigger") || hitData.transform.CompareTag("LightTrigger")) && FirstLightTriggerHit) return;
+            print("Running3");
+            if ((hitData.transform.CompareTag("LightPowerUp") || hitData.transform.CompareTag("LightPowerUp")) && LightPowerUpTrue) return;
+            print("Running4");
+            
             if (newHitData.transform.CompareTag("LightTrigger") && canAnimateBool.canAnimate)
             {
                 _animator.Play(animations);
@@ -183,7 +187,6 @@ public class LightPowerSpot : MonoBehaviour
                 aSouce.PlayOneShot(lightTrigger);
                 canAnimateBool.canAnimate = false;
                 FirstLightTriggerHit = true;
-                firstBounce = true;
             }
             else if (hitData.transform.CompareTag("LightTrigger") && canAnimateBool)
             {
@@ -193,18 +196,18 @@ public class LightPowerSpot : MonoBehaviour
                 aSouce.PlayOneShot(lightTrigger);
                 canAnimateBool.canAnimate = false;
                 FirstLightTriggerHit = true;
-                firstBounce = true;
             }
             else if(newHitData.transform.CompareTag("LightPowerUp") || hitData.transform.CompareTag("LightPowerUp"))
             {
                 empower.CanEmpowerLight = true;
-                firstBounce = true;
+                LightPowerUpTrue = true;
             }
             else
             {
                 ReflectFurther(hitData.point, newHitData);
                 
                 ray = new Ray2D(newHitData.point, Vector2.Reflect(newDirection, newHitData.normal));
+                firstBounce = true;
             }
         }
         else
