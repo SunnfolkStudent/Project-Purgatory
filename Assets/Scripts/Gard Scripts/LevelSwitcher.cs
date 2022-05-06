@@ -44,5 +44,11 @@ public class LevelSwitcher : MonoBehaviour
             GameStatus.HasCompletedZoneB = true;
             _SceneController.LoadScene("Hub");
         }
+
+        if (other.gameObject.tag == "TPtoZoneC")
+        {
+            LoadingScreen.SetActive(true);
+            _SceneController.LoadScene("Zone C");
+        }
     }
 }

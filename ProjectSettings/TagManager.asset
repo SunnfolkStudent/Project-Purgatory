@@ -35,6 +35,7 @@ TagManager:
   - TPtoHUBfromZoneA
   - TPtoHUBformZoneB
   - FreezePowerPickup
+  - TPtoZoneC
   layers:
   - Default
   - TransparentFX

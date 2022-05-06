@@ -6,17 +6,22 @@ public class GameStatus : MonoBehaviour
 {
 
 
-    public static bool HasPickedUpFreezePower;
-    public static bool HasPickedUpLightPower;
-    public static bool HasCompletedZoneA;
-    public static bool HasCompletedZoneB;
-    public static bool CanAccessZoneC;
+    [SerializeField] public static bool HasPickedUpFreezePower;
+    [SerializeField] public static bool HasPickedUpLightPower;
+    [SerializeField] public static bool HasCompletedZoneA;
+    [SerializeField] public static bool HasCompletedZoneB;
+    [SerializeField] public static bool CanAccessZoneC;
 
     [SerializeField] private GameObject DoorToZoneA;
     [SerializeField] private GameObject DoorToZoneB;
     
     [SerializeField] private GameObject DoorToZoneAClosed;
     [SerializeField] private GameObject DoorToZoneBClosed;
+
+    [SerializeField] private GameObject DoorToZoneC;
+
+    [SerializeField] private GameObject CompletedZoneAlight;
+    [SerializeField] private GameObject CompletedZoneBlight;
     
     void Start()
     {
@@ -26,9 +31,13 @@ public class GameStatus : MonoBehaviour
         
         DoorToZoneAClosed.SetActive(false);
         DoorToZoneBClosed.SetActive(false);
-
+        
+        DoorToZoneC.SetActive(false);
+        
+        CompletedZoneAlight.SetActive(false);
+        CompletedZoneBlight.SetActive(false);
     }
-
+    
     
     void Update()
     {
@@ -41,12 +50,19 @@ public class GameStatus : MonoBehaviour
         {
             DoorToZoneA.SetActive(false);
             DoorToZoneAClosed.SetActive(true);
+            CompletedZoneAlight.SetActive(true);
         }
 
         if (HasCompletedZoneB)
         {
             DoorToZoneB.SetActive(false);
             DoorToZoneBClosed.SetActive(true);
+            CompletedZoneBlight.SetActive(true);
+        }
+
+        if (CanAccessZoneC)
+        {
+            DoorToZoneC.SetActive(true);
         }
     }
 }
