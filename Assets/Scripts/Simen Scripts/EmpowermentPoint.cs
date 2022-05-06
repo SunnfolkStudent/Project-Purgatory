@@ -19,7 +19,7 @@ public class EmpowermentPoint : MonoBehaviour
     public int lightRange;
     
     [SerializeField] private Animator animator;
-    [SerializeField] private string animation;
+    [SerializeField] private string animation = null;
     [SerializeField] private SCRUB canAnimateBool;
     public bool firstBounce = true;
     private SpriteRenderer spriteRend;
