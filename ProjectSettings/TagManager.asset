@@ -34,6 +34,7 @@ TagManager:
   - BoxPuzzleFix
   - TPtoHUBfromZoneA
   - TPtoHUBformZoneB
+  - FreezePowerPickup
   layers:
   - Default
   - TransparentFX

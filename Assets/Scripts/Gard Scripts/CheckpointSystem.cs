@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Input = Assets.Scripts.General_Scripts.Input;
 
 public class CheckpointSystem : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class CheckpointSystem : MonoBehaviour
     [HideInInspector] public Vector2 playerCurrentPosition;
     
     public Rigidbody2D _Rigidbody2D;
+    [SerializeField] Input _Input;
 
     public GameObject Player;
 
@@ -36,6 +39,14 @@ public class CheckpointSystem : MonoBehaviour
         {
             //playerCurrentPosition = gameObject.transform.position;
             playerCurrentPosition = Player.gameObject.transform.position;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "FreezePowerPickup" && _Input.Interact)
+        {
+            GameStatus.HasPickedUpFreezePower = true;
         }
     }
 }
