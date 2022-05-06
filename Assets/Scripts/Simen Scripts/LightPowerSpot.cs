@@ -19,8 +19,9 @@ public class LightPowerSpot : MonoBehaviour
     private List<Vector3> Points;
     const int Infinity = 999;
     private bool atLightPoint;
-    private bool firstBounce = true;
-    public bool FirstLightTriggerHit;
+    private bool firstBounce = false;
+    public bool FirstLightTriggerHit = false;
+    public bool LightPowerUpTrue = false;
 
     public string[] tags;
     [SerializeField] private Animator _animator;
@@ -36,7 +37,6 @@ public class LightPowerSpot : MonoBehaviour
     [SerializeField] private AudioClip lightTrigger;
     [SerializeField] private AudioClip LightOnSound;
     #endregion
-    
     
     [SerializeField] private Vector2[] lightDirection = {Vector2.zero, Vector2.left, Vector2.up, Vector2.right};
     public int index;
@@ -169,11 +169,9 @@ public class LightPowerSpot : MonoBehaviour
         var newHitData = Physics2D.Raycast(hitData.point + (newDirection * 0.0001f), newDirection * 100, LightRange);
         if (newHitData || hitData)
         {
-            print(FirstLightTriggerHit);
-
-            if ((newHitData.transform.CompareTag("LightPowerUp") || newHitData.transform.CompareTag("Ground") || newHitData.transform.CompareTag("LightTrigger")) && firstBounce) return;
-            if ((hitData.transform.CompareTag("LightPowerUp") || hitData.transform.CompareTag("Ground") || hitData.transform.CompareTag("LightTrigger")) && FirstLightTriggerHit) return;
-            print(hitData.transform.tag);
+            if ((newHitData.transform.CompareTag("Ground") || newHitData.transform.CompareTag("Ground")) && firstBounce) return;
+            if ((newHitData.transform.CompareTag("LightTrigger") || hitData.transform.CompareTag("LightTrigger")) && FirstLightTriggerHit) return;
+            if ((hitData.transform.CompareTag("LightPowerUp") || hitData.transform.CompareTag("LightPowerUp")) && LightPowerUpTrue) return;
 
             if (newHitData.transform.CompareTag("LightTrigger") && canAnimateBool.canAnimate)
             {
@@ -198,7 +196,7 @@ public class LightPowerSpot : MonoBehaviour
             else if(newHitData.transform.CompareTag("LightPowerUp") || hitData.transform.CompareTag("LightPowerUp"))
             {
                 empower.CanEmpowerLight = true;
-                firstBounce = true;
+                LightPowerUpTrue = true;
             }
             else
             {
