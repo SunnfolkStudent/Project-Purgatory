@@ -46,12 +46,22 @@ public class CheckpointSystem : MonoBehaviour
     {
         if (other.gameObject.tag == "FreezePowerPickup")
         {
-            print("in triggerbox");
             if (_Input.Interact)
             {
                 GameStatus.HasPickedUpFreezePower = true;
                 print("Player in zone");
             }
         }
+
+        if (other.gameObject.tag == "LightPowerPickup")
+        {
+            if (_Input.Interact)
+            {
+                GameStatus.HasPickedUpLightPower = true;
+                print("Has picked up light power");
+            }
+        }
+        
+        
     }
 }

@@ -45,6 +45,10 @@ public class PlayerMovement : MonoBehaviour
     public bool playingAquireFreezeAnimation;
     private bool canPlayAquireFreezeAnimation;
     public bool HideFreezePowerUp;
+
+    public bool playingAquireLightAnimation;
+    private bool canPlayAquireLightAnimation;
+    public bool HideLightPowerup; //I WAS HERE. WAS JUST ABOUT TO IMPLEMENT THIS
     
     #endregion
 
@@ -65,9 +69,7 @@ public class PlayerMovement : MonoBehaviour
         isFacingRight = true;
         playingFreezeAnimation = true;
         canPlayAquireFreezeAnimation = true;
-
-        GameStatus.HasPickedUpFreezePower = true;
-        GameStatus.HasPickedUpLightPower = true;
+        canPlayAquireLightAnimation = true;
     }
 
     private void Update()
@@ -120,12 +122,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void animations()
     {
-        if (IsGrounded() && !playingFreezeAnimation && !playingAquireFreezeAnimation)
+        if (IsGrounded() && !playingFreezeAnimation && !playingAquireFreezeAnimation && !playingAquireLightAnimation)
         {
             //          if this       is not 0  True     false
             anim.Play(_Input.MoveVector.x != 0 ? "Walk" : "Idle");
         }
-        else if (!playingFreezeAnimation && !playingAquireFreezeAnimation)
+        else if (!playingFreezeAnimation && !playingAquireFreezeAnimation && !playingAquireLightAnimation)
         {
             anim.Play(_Rigidbody2D.velocity.y > 0 ? "Jump" : "Falling");
         }
@@ -136,6 +138,14 @@ public class PlayerMovement : MonoBehaviour
             playingFreezeAnimation = true;
             HideFreezePowerUp = true;
             canPlayAquireFreezeAnimation = false;
+        }
+
+        if (GameStatus.HasPickedUpLightPower && canPlayAquireLightAnimation)
+        {
+            anim.Play("Aquire Light");
+            playingAquireLightAnimation = true;
+            HideLightPowerup = true;
+            canPlayAquireLightAnimation = false;
         }
         
     }
