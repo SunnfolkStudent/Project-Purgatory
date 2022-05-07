@@ -90,12 +90,16 @@ public class LightPowerSpot : MonoBehaviour
     #region LightStuff
      private void EnableLight()
         {
+            if (!GameStatus.HasPickedUpLightPower) return; 
+
             LineRenderer.enabled = true;
             LineRenderer.SetPosition(0, new Vector3(lightPoint.position.x, lightPoint.position.y, 0f));
         }
     
         private void UpdateLight()
         {
+            if (!GameStatus.HasPickedUpLightPower) return; 
+
             LineRenderer.SetPosition(0, new Vector3(lightPoint.position.x, lightPoint.position.y, 0f));
             LineRenderer.positionCount = 2;
             LineRenderer.SetPosition(1, new Vector3(lightDirection[index].x * LightRange, lightDirection[index].y * LightRange, 0f));
@@ -116,6 +120,8 @@ public class LightPowerSpot : MonoBehaviour
     
         private void LightController()
         {
+            if (!GameStatus.HasPickedUpLightPower) return; 
+
             if (_input.Interact)
             {
                 index = (index + 1) % lightDirection.Length;
@@ -126,6 +132,7 @@ public class LightPowerSpot : MonoBehaviour
 
     private void RayCast()
     {
+        if (!GameStatus.HasPickedUpLightPower) return; 
         var hitData = Physics2D.Raycast(lightPoint.position, lightDirection[index], LightRange, interactLayer);
         currentReflections = 0;
         Points.Clear();

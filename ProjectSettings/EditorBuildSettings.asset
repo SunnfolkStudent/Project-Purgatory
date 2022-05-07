@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Hub.unity
     guid: 99ee20b2811f4ed4598b00bad1c2d41f
   - enabled: 1
-    path: Assets/Scenes/Zone A.unity
-    guid: 77acc2e5d43c4fe4a90e2f42fe7064eb
+    path: Assets/Scenes/S-Stuff/Zone A 1.unity
+    guid: 1296a37fc3cee274b90b2374c36ca078
   - enabled: 1
     path: Assets/Scenes/Zone B.unity
     guid: 4f91e6d1f12cc10469fd729f7ee01e6c

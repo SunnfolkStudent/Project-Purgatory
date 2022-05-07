@@ -67,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
         canPlayAquireFreezeAnimation = true;
 
         GameStatus.HasPickedUpFreezePower = true;
+        GameStatus.HasPickedUpLightPower = true;
     }
 
     private void Update()

@@ -21,7 +21,7 @@ public class LevelSwitcher : MonoBehaviour
         if (other.gameObject.tag == "TPtoZoneA")
         {
             LoadingScreen.SetActive(true);
-            _SceneController.LoadScene("Zone A");
+            _SceneController.LoadScene("Zone A 1");
         }
 
         if (other.gameObject.tag == "TPtoZoneB")
