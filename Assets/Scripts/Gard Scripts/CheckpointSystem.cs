@@ -44,10 +44,14 @@ public class CheckpointSystem : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "FreezePowerPickup" && _Input.Interact)
+        if (other.gameObject.tag == "FreezePowerPickup")
         {
-            GameStatus.HasPickedUpFreezePower = true;
-            print("Player in zone");
+            print("in triggerbox");
+            if (_Input.Interact)
+            {
+                GameStatus.HasPickedUpFreezePower = true;
+                print("Player in zone");
+            }
         }
     }
 }
