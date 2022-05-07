@@ -64,10 +64,12 @@ public class BoxPushing : MonoBehaviour
         if (isOnIce)
         {
             _Rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
+            print("free");
         }
         else
         {
             _Rigidbody2D.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+            print("Locked");
         }
     }
 
