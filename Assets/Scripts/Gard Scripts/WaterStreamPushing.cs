@@ -14,11 +14,12 @@ public class WaterStreamPushing : MonoBehaviour
     
 
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (canPush)
         {
-            box_RigidBody2D.AddForce(transform.up * pushForce, ForceMode2D.Force);
+            print("pushing");
+            box_RigidBody2D.AddForce(transform.up * pushForce*Time.deltaTime, ForceMode2D.Force);
         }
     }
 
@@ -27,6 +28,7 @@ public class WaterStreamPushing : MonoBehaviour
         if (other.gameObject.tag == "Box")
         {
             canPush = true;
+            print("can push");
         }
     }
 
@@ -35,6 +37,7 @@ public class WaterStreamPushing : MonoBehaviour
         if (other.gameObject.tag == "Box")
         {
             canPush = false;
+            print("can not push");
         }
     }
 }
