@@ -99,6 +99,8 @@ public class PlayerMovement : MonoBehaviour
         {
             print("light up background");
         }
+        
+        
     }
 
     

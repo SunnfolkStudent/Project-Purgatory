@@ -232,7 +232,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 340990218}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.22, y: -0.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -27054,10 +27054,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 642164746, guid: 38108729ceac25e4ab95c232cc95cd04, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: be7d03e83f9a26746a589e0b2698c1aa, type: 3}
     - target: {fileID: 1291345957, guid: 38108729ceac25e4ab95c232cc95cd04, type: 3}
       propertyPath: LoadingScreen
       value: 
       objectReference: {fileID: 1844194689}
+    - target: {fileID: 1996365285, guid: 38108729ceac25e4ab95c232cc95cd04, type: 3}
+      propertyPath: m_SortingOrder
+      value: 123
+      objectReference: {fileID: 0}
     - target: {fileID: 7426118430613474818, guid: 38108729ceac25e4ab95c232cc95cd04, type: 3}
       propertyPath: m_Name
       value: Player (1)

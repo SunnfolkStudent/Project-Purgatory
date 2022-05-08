@@ -23,12 +23,14 @@ namespace Assets.Scripts.General_Scripts
         [HideInInspector] public Vector2 MoveVector;
         [HideInInspector] public bool Jump;
         [HideInInspector] public bool Interact;
+        [HideInInspector] public bool Reload;
 
         void Update()
         {
             MoveVector = _Input.Player.Move.ReadValue<Vector2>();
             Interact = _Input.Player.Interact.triggered;
             Jump = _Input.Player.Jump.triggered;
+            Reload = _Input.Player.Reload.triggered;
         }
     }
 }

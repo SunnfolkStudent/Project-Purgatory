@@ -2,18 +2,30 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using Input = Assets.Scripts.General_Scripts.Input;
 
 public class LevelSwitcher : MonoBehaviour
 {
     public SceneController _SceneController;
 
     [SerializeField] private GameObject LoadingScreen;
+    [SerializeField] private Input _Input;
 
     //[SerializeField] private GameStatus _GameStatus;
 
     private void Start()
     {
         LoadingScreen.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (_Input.Reload)
+        {
+            _SceneController.ReloadScene();
+            print("reloading scene");
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
