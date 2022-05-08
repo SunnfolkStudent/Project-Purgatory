@@ -37,6 +37,7 @@ TagManager:
   - FreezePowerPickup
   - TPtoZoneC
   - LightPowerPickup
+  - FinalSoul
   layers:
   - Default
   - TransparentFX

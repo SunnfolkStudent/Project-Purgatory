@@ -11,6 +11,7 @@ public class GameStatus : MonoBehaviour
     [SerializeField] public static bool HasCompletedZoneA;
     [SerializeField] public static bool HasCompletedZoneB;
     [SerializeField] public static bool CanAccessZoneC;
+    [SerializeField] public static bool CanPickUpFinalSoul;
 
     [SerializeField] private GameObject DoorToZoneA;
     [SerializeField] private GameObject DoorToZoneB;
@@ -20,8 +21,11 @@ public class GameStatus : MonoBehaviour
 
     [SerializeField] private GameObject DoorToZoneC;
 
-    [SerializeField] private GameObject CompletedZoneAlight;
-    [SerializeField] private GameObject CompletedZoneBlight;
+    [SerializeField] private GameObject LeftBackground;
+    [SerializeField] private GameObject RightBackground;
+    [SerializeField] private GameObject DefultBackground;
+    [SerializeField] private GameObject OpenBackground;
+    
     
     void Start()
     {
@@ -34,8 +38,10 @@ public class GameStatus : MonoBehaviour
         
         DoorToZoneC.SetActive(false);
         
-        CompletedZoneAlight.SetActive(false);
-        CompletedZoneBlight.SetActive(false);
+        LeftBackground.SetActive(false);
+        RightBackground.SetActive(false);
+        OpenBackground.SetActive(false);
+        DefultBackground.SetActive(true);
     }
     
     
@@ -50,19 +56,20 @@ public class GameStatus : MonoBehaviour
         {
             DoorToZoneA.SetActive(false);
             DoorToZoneAClosed.SetActive(true);
-            CompletedZoneAlight.SetActive(true);
+            LeftBackground.SetActive(true);
         }
 
         if (HasCompletedZoneB)
         {
             DoorToZoneB.SetActive(false);
             DoorToZoneBClosed.SetActive(true);
-            CompletedZoneBlight.SetActive(true);
+            RightBackground.SetActive(true);
         }
 
         if (CanAccessZoneC)
         {
             DoorToZoneC.SetActive(true);
+            OpenBackground.SetActive(true);
         }
     }
 }

@@ -61,7 +61,15 @@ public class CheckpointSystem : MonoBehaviour
                 print("Has picked up light power");
             }
         }
-        
+
+        if (other.gameObject.tag == "FinalSoul")
+        {
+            if (_Input.Interact)
+            {
+                GameStatus.CanPickUpFinalSoul = true;
+                print("Can now pick up final soul");
+            }
+        }
         
     }
 }

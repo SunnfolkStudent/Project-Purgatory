@@ -49,6 +49,13 @@ public class PlayerMovement : MonoBehaviour
     public bool playingAquireLightAnimation;
     private bool canPlayAquireLightAnimation;
     public bool HideLightPowerup; //I WAS HERE. WAS JUST ABOUT TO IMPLEMENT THIS
+
+    public bool playingAquireFinalSoulAnimation;
+    private bool canPlayAquireFinalSoul;
+    public bool HideFinalSoul;
+    public bool LightUpBackground;
+
+    public bool FreezeMovement;
     
     #endregion
 
@@ -70,11 +77,13 @@ public class PlayerMovement : MonoBehaviour
         playingFreezeAnimation = true;
         canPlayAquireFreezeAnimation = true;
         canPlayAquireLightAnimation = true;
+        canPlayAquireFinalSoul = true;
+        FreezeMovement = false;
     }
 
     private void Update()
     {
-        if (_Input.Jump && IsGrounded()/*grounded*/)
+        if (_Input.Jump && IsGrounded()/*grounded*/ && !FreezeMovement)
         {
             source.PlayOneShot(jumping);
             _Rigidbody2D.velocity = new Vector2(_Rigidbody2D.velocity.x, jumpSpeed);
@@ -84,13 +93,23 @@ public class PlayerMovement : MonoBehaviour
         FlipPlayer();
         FreezeAnimationTrigger();
         LandingAudio();
+
+
+        if (LightUpBackground)
+        {
+            print("light up background");
+        }
     }
 
     
 
     private void FixedUpdate()
     {
-        _Rigidbody2D.velocity = new Vector2(_Input.MoveVector.x * moveSpeed, _Rigidbody2D.velocity.y);
+        if (!FreezeMovement)
+        {
+            _Rigidbody2D.velocity = new Vector2(_Input.MoveVector.x * moveSpeed, _Rigidbody2D.velocity.y);
+        }
+       
 
         if (isSliding)
         {
@@ -112,7 +131,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FlipPlayer()
     {
-        if (_Input.MoveVector.x != 0)
+        if (_Input.MoveVector.x != 0 && !FreezeMovement)
         {
             var scale = transform.localScale;
             transform.localScale = new Vector3(_Input.MoveVector.x, scale.y, scale.z);
@@ -122,12 +141,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void animations()
     {
-        if (IsGrounded() && !playingFreezeAnimation && !playingAquireFreezeAnimation && !playingAquireLightAnimation)
+        if (IsGrounded() && !playingFreezeAnimation && !playingAquireFreezeAnimation && !playingAquireLightAnimation && !playingAquireFinalSoulAnimation && !FreezeMovement)
         {
             //          if this       is not 0  True     false
             anim.Play(_Input.MoveVector.x != 0 ? "Walk" : "Idle");
         }
-        else if (!playingFreezeAnimation && !playingAquireFreezeAnimation && !playingAquireLightAnimation)
+        else if (!playingFreezeAnimation && !playingAquireFreezeAnimation && !playingAquireLightAnimation && !playingAquireFinalSoulAnimation && !FreezeMovement)
         {
             anim.Play(_Rigidbody2D.velocity.y > 0 ? "Jump" : "Falling");
         }
@@ -146,6 +165,15 @@ public class PlayerMovement : MonoBehaviour
             playingAquireLightAnimation = true;
             HideLightPowerup = true;
             canPlayAquireLightAnimation = false;
+        }
+
+        if (GameStatus.CanPickUpFinalSoul && canPlayAquireFinalSoul)
+        {
+            FreezeMovement = true;
+            anim.Play("AquireFinalSoul");
+            playingAquireFinalSoulAnimation = true;
+            HideFinalSoul = true;
+            canPlayAquireFinalSoul = false;
         }
         
     }
